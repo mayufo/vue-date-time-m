@@ -220,7 +220,12 @@
         this.isShow = true
         if (this.confirmDate) {
           this.date = this.confirmDate
+        } else if (this.value) {
+          this.date = new Date(this.value)
+        } else {
+          this.date = new Date()
         }
+        this.initArray()
         this.dateTimeInit()
       },
       /**
@@ -333,6 +338,18 @@
       selectTime () {
         if (this.type === 'dateTime' || this.type === 'time') {
           this.status = 'time'
+          this.verifyTime()
+        }
+      },
+      /**
+       * 验证时间
+       */
+      verifyTime () {
+        if (this.max && (new Date(this.max)).getTime() < this.date.getTime()) {
+          this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 0, 0)
+        }
+        if (this.min && (new Date(this.min)).getTime() > this.date.getTime()) {
+          this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 23, 59)
         }
       },
       /**
@@ -479,6 +496,7 @@
           minDate = arr.findIndex((item) => {
             return item.isMonth && new Date(this.min).getTime() < new Date(this.date.getFullYear(), this.date.getMonth(), item.value).getTime()
           })
+          minDate--
         }
 
         if (minDate <= -1) {
