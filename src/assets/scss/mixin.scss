@@ -1,0 +1,37 @@
+// 强制不换行超出文字省略号
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 多行情况下第line行超出文字省略号
+@mixin multiEllipsis($line) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical; // 从上向下垂直排列子元素。设置或检索伸缩盒对象的子元素的排列方式 。
+  text-overflow: ellipsis; //文本溢出 用省略号显示
+  -webkit-line-clamp: $line; // 多少行省略
+  overflow: hidden;
+  word-break: break-all;
+}
+
+// 一个页面的整体布局
+@mixin fixArea ($top: 0, $bottom: 0) {
+  position: fixed;
+  top: $top;
+  left: 0;
+  bottom: $bottom;
+  width: 100%;
+}
+// 字体加粗
+@mixin fontBold {
+  font-family: PingFangSC-Semibold, "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  font-weight: 700;
+}
+
+// 头像
+@mixin avatar($val) {
+  height: $val;
+  width: $val;
+  border-radius: 50%;
+}
