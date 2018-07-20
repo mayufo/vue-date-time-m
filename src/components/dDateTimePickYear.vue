@@ -55,7 +55,7 @@
         this.$emit('click', index)
       },
       scrollYear () {
-        this.scroll.scrollTo(0, 0 - document.querySelector('.selected').getBoundingClientRect().top + document.body.clientHeight / 2, 300)
+        this.scroll.scrollTo(0, 0 - document.querySelector('.selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2))
       }
     },
     components: {}

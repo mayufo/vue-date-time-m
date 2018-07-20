@@ -64,7 +64,7 @@
               </div>
             </div>
             <div class="d-date-time-button">
-              <a @click="now" :style="{color: color}" v-show="showToday">现在</a>
+              <a @click="now" :style="{color: color}" v-show="showToday && showTodayButton">现在</a>
               <a @click="hide" :style="{color: color}">取消</a>
               <a @click="confirm" :style="{color: color}">确认</a>
             </div>
@@ -130,8 +130,11 @@
        * 默认值
        * format 2018/07/05 22:45
        */
-      value: {type: [Number, String], 'default': ''}
-
+      value: {type: [Number, String], 'default': ''},
+      /**
+       * 是否显示现在按钮，默认false
+       */
+      showTodayButton: {type: [Boolean], 'default': true}
     },
     watch: {
       type (val) {
@@ -212,6 +215,8 @@
        */
       now () {
         this.date = new Date()
+        this.initArray()
+        this.dateTimeInit()
       },
       /**
        * 显示时间组件
