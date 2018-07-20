@@ -15,11 +15,16 @@
       <h2>Using :</h2>
       <p>main.js</p>
       <div class="code">
-        npm install vue-date-time-m
+        <pre v-highlightjs v-pre>
+        <code class="javascript">
+          import dateTime from 'vue-date-time-m';
+          Vue.component('data-time', dateTime);
+        </code>
+        </pre>
       </div>
       <p>or in component</p>
       <pre v-highlightjs v-pre>
-        <code class="javascript" >
+        <code class="javascript">
           &lt;template>
             &lt;div class="date-time-item">
               &lt;div class="date-time-input" @click="show">{{ data }}&lt;/div>
@@ -315,10 +320,7 @@
       border-radius: 4px;
       line-height: 1.4;
       font-size: 12px;
-      overflow-x: scroll;
-      code {
-        /*overflow: scroll;*/
-      }
+      overflow-x: auto;
     }
 
     .date-time-use {
@@ -331,9 +333,9 @@
       .item-demo {
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(0,0,0,.125);
+        border: 1px solid rgba(0, 0, 0, .125);
         padding: 16px;
-        box-shadow: 0 0 15px 0 rgba(0,0,0,.21);
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, .21);
         .demo-code {
           background: ghostwhite;
           height: 100%;
