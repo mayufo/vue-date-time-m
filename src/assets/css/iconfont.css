@@ -58,4 +58,9 @@
 .iconf-angle-right:before {
   content: "\f026";
 }
-
+.iconf-angle-down:before {
+  content: "\f027";
+}
+.iconf-angle-up:before {
+  content: "\f028";
+}
