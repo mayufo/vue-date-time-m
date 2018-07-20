@@ -326,6 +326,7 @@
       selectYear () {
         if (this.type === 'year' || this.type === 'dateTime' || this.type === 'date') {
           this.status = 'year'
+          this.activeYear(this.date.getFullYear())
         }
       },
       /**
@@ -334,6 +335,7 @@
       selectMonth () {
         if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date') {
           this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
+          this.activeMonth(this.date.getMonth())
           this.status = 'month'
         }
       },
