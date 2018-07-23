@@ -82,6 +82,7 @@
   import DDateTimePickHm from './components/dDateTimePickHm'
   import {WEEKS, MONTH, SHOWDAY, MINYEAR, MAXYEAR} from './config/config'
   import time from './utils/dateTime'
+  import '../../assets/style.css'
 
   export default {
     name: 'dDateTime',
@@ -624,16 +625,19 @@
         color: white;
         opacity: .8;
         font-size: 16px;
+        display: flex;
+        justify-content: flex-start;
       }
       .d-date-time-value {
         color: white;
         font-size: 20px;
         margin-top: 8px;
         transition: all 0.4s cubic-bezier(0.25, 0.1, 0.17, 1.84);
-        max-width: 284px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        display: flex;
+        justify-content: flex-start;
       }
     }
     .d-date-time-content {
