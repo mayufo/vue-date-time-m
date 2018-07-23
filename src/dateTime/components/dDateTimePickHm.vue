@@ -71,7 +71,6 @@
         this.$emit('changeHour', param)
       },
       changeMinute (param) {
-//        console.log(param)
         this.$emit('changeMinute', param)
       }
     },

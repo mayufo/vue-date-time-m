@@ -77,12 +77,11 @@
 </template>
 
 <script>
-  import DDateTimeCard from '@/components/dDateTimeCard'
-  import DDateTimePickYear from '@/components/dDateTimePickYear'
-  import DDateTimePickHm from '@/components/dDateTimePickHm'
-
-  import {WEEKS, MONTH, SHOWDAY, MINYEAR, MAXYEAR} from '@/config/config'
-  import time from '@/utils/dateTime'
+  import DDateTimeCard from './components/dDateTimeCard.vue'
+  import DDateTimePickYear from './components/dDateTimePickYear'
+  import DDateTimePickHm from './components/dDateTimePickHm'
+  import {WEEKS, MONTH, SHOWDAY, MINYEAR, MAXYEAR} from './config/config'
+  import time from './utils/dateTime'
 
   export default {
     name: 'dDateTime',
@@ -138,7 +137,6 @@
     },
     watch: {
       type (val) {
-        console.log(val)
       },
       date () {
         this.dateTimeInit()
@@ -569,7 +567,6 @@
       }
     },
     created () {
-      console.log(this.type)
       this.verifyDate()
       this.initArray()
       this.dateTimeInit()
@@ -634,7 +631,9 @@
         margin-top: 8px;
         transition: all 0.4s cubic-bezier(0.25, 0.1, 0.17, 1.84);
         max-width: 284px;
-        @include ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .d-date-time-content {
