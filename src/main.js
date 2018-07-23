@@ -2,13 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-
+import VueHighlightJS from 'vue-highlightjs'
 
 /*
  * Use Vue Highlight.js
  */
-// Vue.use(VueHighlightJS);
-// import 'highlight.js/styles/github.css';
+Vue.use(VueHighlightJS);
 
 import VueDateTimeM from './dateTime/dDateTime.vue'
 Vue.component('date-time', VueDateTimeM);

@@ -13,9 +13,18 @@
             </div>
             <div class="d-date-time-content">
               <div class="d-date-time-months" v-if="status === 'day'">
-                <i class="iconf iconf-angle-left" @click="changeMonth('last')"></i>
+                <div @click="changeMonth('last')">
+                  <slot name="prevMonth" >
+                    <i  > < </i>
+                  </slot>
+                </div>
+
                 <div class="d-date-time-month" @click="selectMonth">{{month}}月</div>
-                <i class="iconf iconf-angle-right" @click="changeMonth('next')"></i>
+                <div @click="changeMonth('next')">
+                  <slot name="nextMonth">
+                    <i> > </i>
+                  </slot>
+                </div>
               </div>
 
               <!--展示周几-->
@@ -648,6 +657,8 @@
         i {
           display: inline-block;
           padding: 16px;
+          font-style: normal;
+          font-size: 14px;
         }
         .d-date-time-month {
           line-height: 50px;
