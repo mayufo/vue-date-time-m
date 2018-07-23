@@ -9,6 +9,10 @@ UI部分借鉴了  [vue-persian-datetime-picker](https://talkhabi.github.io/vue-
 
 ![](https://github.com/mayufo/vue-date-time-m/blob/master/img.gif)
 
+### 在线demo
+[demo](https://mayufo.github.io/vue-date-time-m/)
+
+
 ### npm
 
 ```
