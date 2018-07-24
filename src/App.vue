@@ -210,13 +210,11 @@
               <code class="html">
                 &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
                 &lt;date-time ref="dateTime"
-                                     type="dateTime"
-                                     min="2017/07/02 23:59"
-                                     max="2018/08/31 00:00"
-                                     @confirm="select6"
-                                     value="2018/08/04"
-                                     color="#417df4"
-                                     @confirm="select">&lt;/date-time>
+                           type="dateTime"
+                           min="2017/07/02 23:59"
+                           max="2018/09/15 00:00"
+                           @confirm="select"
+                           color="#417df4"></date-time>
               </code>
             </pre>
                         </div>
