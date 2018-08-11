@@ -1,6 +1,6 @@
 {
   "name": "vue-date-time-m",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "A Vue.js project",
   "author": "mayufo <mayufo@aliyun.com>",
   "scripts": {
@@ -54,7 +54,5 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }

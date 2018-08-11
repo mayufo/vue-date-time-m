@@ -25,7 +25,7 @@
         <code class="javascript">
           &lt;template>
             &lt;div class="date-time-item">
-              &lt;div class="date-time-input" @click="show">{{ data }}&lt;/div>
+              &lt;div class="date-time-input" @click="show">[[ data ]]&lt;/div>
               &lt;date-time ref="dateTime"
                            type="date"
                            @confirm="select">&lt;/date-time>
@@ -103,7 +103,7 @@
                         <div class="demo-code">
             <pre highlightjs >
               <code class="html">
-                &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
+                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time  ref="dateTime"
                                       @confirm="select">&lt;/date-time>
               </code>
@@ -121,7 +121,7 @@
                         <div class="demo-code">
             <pre highlightjs >
               <code class="html">
-                &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
+                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
                                      @confirm="select"
                                      format="yyyy年MM月dd日 hh小时mm分">
@@ -148,7 +148,7 @@
                         <div class="demo-code">
             <pre highlightjs >
               <code class="html">
-                &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
+                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
                                      type="date"
                                      @confirm="select">&lt;/date-time>
@@ -168,7 +168,7 @@
                         <div class="demo-code">
             <pre highlightjs >
               <code class="html">
-                &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
+                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
                                      type="year"
                                      @confirm="select">&lt;/date-time>
@@ -188,7 +188,7 @@
                         <div class="demo-code">
             <pre highlightjs >
               <code class="html">
-                &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
+                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
                                      type="month"
                                      @confirm="select">&lt;/date-time>
@@ -208,13 +208,17 @@
                         <div class="demo-code">
             <pre highlightjs >
               <code class="html">
-                &lt;div class="date-time-input" @click="show">{{date}}&lt;/div>
+                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
                            type="dateTime"
                            min="2017/07/02 23:59"
                            max="2018/09/15 00:00"
+                           textAlign="center"
                            @confirm="select"
-                           color="#417df4"></date-time>
+                           color="#417df4">
+                    &lt;i slot="prevMonth"> < &lt;/i>
+                    &lt;i slot="nextMonth"> > &lt;/i>
+                  &lt;/date-time>
               </code>
             </pre>
                         </div>
@@ -225,7 +229,11 @@
                                        min="2017/07/02 23:59"
                                        max="2018/09/15 00:00"
                                        @confirm="select6"
-                                       color="#417df4"></date-time>
+                                       textAlign="center"
+                                       color="#417df4">
+                                <i slot="prevMonth"> < </i>
+                                <i slot="nextMonth"> > </i>
+                            </date-time>
                         </div>
                         <p>增加可选范围和自定义颜色</p>
                     </div>

@@ -8,22 +8,23 @@
                         <div class="d-date-time-header" :style="{background: color}">
                             <div class="d-date-time-year"
                                  v-if="type === 'dateTime' || type === 'year' || type ==='date'"
+                                 :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}"
                                  @click="selectYear">{{year}}
                             </div>
-                            <div class="d-date-time-value">{{showDate}}</div>
+                            <div class="d-date-time-value" :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}">{{showDate}}</div>
                         </div>
                         <div class="d-date-time-content">
                             <div class="d-date-time-months" v-if="status === 'day'">
                                 <div @click="changeMonth('last')">
                                     <slot name="prevMonth">
-                                        <i> < </i>
+                                        <i class="iconfont icon-arrow icon-left"></i>
                                     </slot>
                                 </div>
 
                                 <div class="d-date-time-month" @click="selectMonth">{{month}}月</div>
                                 <div @click="changeMonth('next')">
                                     <slot name="nextMonth">
-                                        <i> > </i>
+                                        <i class="iconfont icon-arrow"></i>
                                     </slot>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
 
                             <!--选择年份-->
                             <div class="d-date-time-years-wrap" v-if="status === 'year'">
-                                <div v-if="type !== 'year' " class="d-data-time-close" @click="close">x</div>
+                                <i v-if="type !== 'year' " class="d-data-time-close iconfont icon-close" @click="close"></i>
                                 <d-date-time-pick-year
                                         :data="yearArr"
                                         :color="color"
@@ -55,7 +56,7 @@
 
                             <!--选择月份-->
                             <div class="d-date-time-month-wrap" v-if="status === 'month'">
-                                <div v-if="type !=='month'" class="d-data-time-close" @click="close">x</div>
+                                <i v-if="type !=='month'" class="d-data-time-close iconfont icon-close" @click="close"></i>
                                 <div class="d-data-time-months">
                                     <div v-for="(item, index) in monthArr" :key="`month-${index}`">
                                         <div @click="chooseMonth(index)">
@@ -67,7 +68,7 @@
                             </div>
                             <!--选择时分-->
                             <div class="d-date-time-time-wrap" v-if="status === 'time'">
-                                <div v-if="type !=='time'" class="d-data-time-close" @click="close">x</div>
+                                <i v-if="type !=='time'" class="d-data-time-close iconfont icon-close" @click="close"></i>
                                 <d-date-time-pick-hm :date="date"
                                                      @changeHour="changeHour"
                                                      @changeMinute="changeMinute"
@@ -145,7 +146,11 @@
             /**
              * 是否显示现在按钮，默认false
              */
-            showTodayButton: {type: [Boolean], 'default': true}
+            showTodayButton: {type: [Boolean], 'default': true},
+            /**
+             * 时间的对齐方式
+             */
+            textAlign: {type: [String], 'default': 'left'}
         },
         watch: {
             type (val) {
@@ -636,8 +641,9 @@
                 opacity: .8;
                 font-size: 16px;
                 display: flex;
-                justify-content: flex-start;
+
             }
+
             .d-date-time-value {
                 color: white;
                 font-size: 20px;
@@ -647,7 +653,15 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: flex;
+            }
+            .left {
                 justify-content: flex-start;
+            }
+            .center {
+                justify-content: center;
+            }
+            .right {
+                justify-content: flex-end;
             }
         }
         .d-date-time-content {
@@ -655,11 +669,14 @@
             .d-date-time-months {
                 display: flex;
                 justify-content: space-between;
+                .icon-left {
+                    transform:rotate(-180deg);
+                }
                 i {
                     display: inline-block;
                     padding: 16px;
                     font-style: normal;
-                    font-size: 14px;
+                    font-size: 22px;
                 }
                 .d-date-time-month {
                     line-height: 50px;

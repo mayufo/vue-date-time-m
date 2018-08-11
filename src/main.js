@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import VueHighlightJS from 'vue-highlightjs'
 
+
 /*
  * Use Vue Highlight.js
  */
