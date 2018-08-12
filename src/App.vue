@@ -206,19 +206,19 @@
                     <!--6-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs >
+            <pre highlightjs>
               <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                           type="dateTime"
-                           min="2017/07/02 23:59"
-                           max="2018/09/15 00:00"
-                           textAlign="center"
-                           @confirm="select"
-                           color="#417df4">
-                    &lt;i slot="prevMonth"> < &lt;/i>
-                    &lt;i slot="nextMonth"> > &lt;/i>
-                  &lt;/date-time>
+               &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+               &lt;date-time ref="dateTime6"
+                          type="dateTime"
+                          min="2017/07/02 23:59"
+                          max="2018/09/15 00:00"
+                          @confirm="select"
+                          textAlign="center"
+                          color="#417df4">
+                                &lt;i slot="prevMonth"> < &lt;/i>
+                                &lt;i slot="nextMonth"> > &lt;/i>
+                            &lt;/date-time>
               </code>
             </pre>
                         </div>
