@@ -83,7 +83,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #b9b9b9;
-
+      cursor: pointer;
     }
 
     .is-month {
@@ -117,6 +117,7 @@
       width: 105px;
       line-height: 36px;
       text-align: center;
+      cursor: pointer;
       div {
         color: #b9b9b9;
       }

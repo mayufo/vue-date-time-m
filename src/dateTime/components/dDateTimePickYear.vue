@@ -92,7 +92,7 @@
         line-height: 44px;
         text-align: center;
         color: #b9b9b9;
-
+        cursor: pointer;
       }
 
       .able {

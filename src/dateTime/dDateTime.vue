@@ -641,6 +641,7 @@
                 opacity: .8;
                 font-size: 16px;
                 display: flex;
+                cursor: pointer;
 
             }
 
