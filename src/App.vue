@@ -87,8 +87,9 @@
                 // 日期选中值，默认今天
                 value: 2018/07/05 22:45,
                 // 是否显示现在按钮 默认是true
-                showTodayButton: false
-
+                showTodayButton: false,
+                // 默认值left, 可以选left\center\right
+                textAlign: left
             }
         });
       </code>
@@ -211,7 +212,7 @@
                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                &lt;date-time ref="dateTime6"
                           type="dateTime"
-                          min="2017/07/02 23:59"
+                          min="2017/09/26 23:59"
                           max="2018/09/15 00:00"
                           @confirm="select"
                           textAlign="center"
