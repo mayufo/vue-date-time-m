@@ -120,6 +120,9 @@
         .d-date-time-item-wrap {
             flex-direction: column;
             width: 158px;
+            i {
+                cursor: pointer;;
+            }
             .icon-up {
                 transform: rotate(-90deg);
             }

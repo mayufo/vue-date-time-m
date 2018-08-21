@@ -11,7 +11,10 @@
                                  :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}"
                                  @click="selectYear">{{year}}
                             </div>
-                            <div class="d-date-time-value" :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}">{{showDate}}</div>
+                            <div class="d-date-time-value"
+                                 :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}">
+                                {{showDate}}
+                            </div>
                         </div>
                         <div class="d-date-time-content">
                             <div class="d-date-time-months" v-if="status === 'day'">
@@ -38,7 +41,8 @@
 
                             <!--选择年份-->
                             <div class="d-date-time-years-wrap" v-if="status === 'year'">
-                                <i v-if="type !== 'year' " class="d-data-time-close iconfont icon-close" @click="close"></i>
+                                <i v-if="type !== 'year' " class="d-data-time-close iconfont icon-close"
+                                   @click="close"></i>
                                 <d-date-time-pick-year
                                         :data="yearArr"
                                         :color="color"
@@ -56,7 +60,8 @@
 
                             <!--选择月份-->
                             <div class="d-date-time-month-wrap" v-if="status === 'month'">
-                                <i v-if="type !=='month'" class="d-data-time-close iconfont icon-close" @click="close"></i>
+                                <i v-if="type !=='month'" class="d-data-time-close iconfont icon-close"
+                                   @click="close"></i>
                                 <div class="d-data-time-months">
                                     <div v-for="(item, index) in monthArr" :key="`month-${index}`">
                                         <div @click="chooseMonth(index)">
@@ -68,7 +73,8 @@
                             </div>
                             <!--选择时分-->
                             <div class="d-date-time-time-wrap" v-if="status === 'time'">
-                                <i v-if="type !=='time'" class="d-data-time-close iconfont icon-close" @click="close"></i>
+                                <i v-if="type !=='time'" class="d-data-time-close iconfont icon-close"
+                                   @click="close"></i>
                                 <d-date-time-pick-hm :date="date"
                                                      @changeHour="changeHour"
                                                      @changeMinute="changeMinute"
@@ -153,10 +159,8 @@
             textAlign: {type: [String], 'default': 'left'}
         },
         watch: {
-            type (val) {
-            },
             date () {
-                this.dateTimeInit()
+                this.initArray()
             },
             dateArr () {
                 this.dateTimeInit()
@@ -170,14 +174,14 @@
                     return true
                 }
             },
-            month () {
-                return this.date.getMonth() + 1
-            },
             showDate () {
                 return time.format(this.date, this.formatDate)
             },
             year () {
                 return this.date.getFullYear()
+            },
+            month () {
+                return this.date.getMonth() + 1
             },
             hour () {
                 return time.formatTime(this.date.getHours())
@@ -230,8 +234,6 @@
              */
             now () {
                 this.date = new Date()
-                this.initArray()
-                this.dateTimeInit()
             },
             /**
              * 显示时间组件
@@ -246,8 +248,6 @@
                     this.date = new Date()
                 }
                 this.verifyDate()
-                this.initArray()
-                this.dateTimeInit()
             },
             /**
              * 隐藏时间组件
@@ -281,7 +281,14 @@
              */
             chooseYear (index) {
                 if (this.yearArr[index].able) {
-                    this.date = new Date(this.yearArr[index].value, this.date.getMonth(), this.date.getDate(), this.date.getHours(), this.date.getMinutes())
+                    let tmp = new Date(this.yearArr[index].value, this.date.getMonth(), this.date.getDate(), this.date.getHours(), this.date.getMinutes())
+                    if (this.max && tmp.getTime() > new Date(this.max).getTime()) {
+                        this.date = new Date(this.max)
+                    } else if (this.min && tmp.getTime() < new Date(this.min).getTime()) {
+                        this.date = new Date(this.min)
+                    } else {
+                        this.date = tmp
+                    }
                     this.selectMonth()
                 }
             },
@@ -299,7 +306,15 @@
              */
             chooseMonth (index) {
                 if (this.monthArr[index].able) {
-                    this.date = new Date(this.date.getFullYear(), parseInt(this.monthArr[index].value, 10) - 1, this.date.getDate(), this.date.getHours(), this.date.getMinutes())
+                    let tmp = new Date(this.date.getFullYear(), parseInt(this.monthArr[index].value, 10) - 1, this.date.getDate(), this.date.getHours(), this.date.getMinutes())
+                    if (this.max && tmp.getTime() > new Date(this.max)) {
+                        this.date = new Date(this.date.getFullYear(), parseInt(this.monthArr[index].value, 10) - 1, 1, this.date.getHours(), this.date.getMinutes())
+                    } else if (this.min && tmp.getTime() < new Date(this.min)) {
+                        let newMonthDay = time.getDaysInOneMonth(tmp)
+                        this.date = new Date(this.date.getFullYear(), parseInt(this.monthArr[index].value, 10) - 1, newMonthDay, this.date.getHours(), this.date.getMinutes())
+                    } else {
+                        this.date = tmp
+                    }
                     this.dateArr = this.productDateArr(this.date)
                     this.verifyTime()
                     this.close()
@@ -311,12 +326,12 @@
             changeHour (param) {
                 if (param === 'last') {
                     let lastTime = time.changeHour(this.date, this.date.getHours() - 1)
-                    if (!this.min || (this.min && new Date(this.min).getTime() < lastTime.getTime())) {
+                    if (!this.min || (this.min && new Date(this.min).getTime() <= lastTime.getTime())) {
                         this.date = lastTime
                     }
                 } else if (param === 'next') {
                     let nextTime = time.changeHour(this.date, this.date.getHours() + 1)
-                    if (!this.max || (this.max && new Date(this.max).getTime() > nextTime.getTime())) {
+                    if (!this.max || (this.max && new Date(this.max).getTime() >= nextTime.getTime())) {
                         this.date = nextTime
                     }
                 }
@@ -327,12 +342,12 @@
             changeMinute (param) {
                 if (param === 'last') {
                     let lastTime = time.changeMinute(this.date, this.date.getMinutes() - 1)
-                    if (!this.min || (this.min && new Date(this.min).getTime() < lastTime.getTime())) {
+                    if (!this.min || (this.min && new Date(this.min).getTime() <= lastTime.getTime())) {
                         this.date = lastTime
                     }
                 } else if (param === 'next') {
                     let nextTime = time.changeMinute(this.date, this.date.getMinutes() + 1)
-                    if (!this.max || (this.max && new Date(this.max).getTime() > nextTime.getTime())) {
+                    if (!this.max || (this.max && new Date(this.max).getTime() >= nextTime.getTime())) {
                         this.date = nextTime
                     }
                 }
@@ -391,11 +406,22 @@
             changeMonth (params) {
                 if (params === 'next') {
                     if ((this.max && new Date(this.max).getTime() > new Date(this.date.getFullYear(), this.date.getMonth() + 1, 1).getTime()) || (!this.max)) {
-                        this.date = time.changeMonth(this.date, this.date.getMonth() + 1)
+                        let tmp = time.changeMonth(this.date, this.date.getMonth() + 1)
+                        if (this.max && tmp.getTime() > new Date(this.max)) {
+                            this.date = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 1, this.date.getHours(), this.date.getMinutes())
+                        } else {
+                            this.date = tmp
+                        }
                     }
                 } else if (params === 'last') {
                     if ((this.min && new Date(this.min).getTime() < new Date(this.date.getFullYear(), this.date.getMonth() - 1, time.getDaysInOneMonth(this.date) - 1).getTime()) || (!this.min)) {
-                        this.date = time.changeMonth(this.date, this.date.getMonth() - 1)
+                        let tmp = time.changeMonth(this.date, this.date.getMonth() - 1)
+                        if (this.min && tmp.getTime() < new Date(this.min)) {
+                            let newMonthDay = time.getDaysInOneMonth(tmp)
+                            this.date = new Date(this.date.getFullYear(), this.date.getMonth() - 1, newMonthDay, this.date.getHours(), this.date.getMinutes())
+                        } else {
+                            this.date = tmp
+                        }
                     }
                 }
                 this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
@@ -479,6 +505,7 @@
                 this.yearArr = this.verifyMaxMin(this.produceArr(time.createArray(MINYEAR, MAXYEAR)), 'year')
                 this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                 this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
+                console.log(this.dateArr)
             },
             /**
              * 判断是否存在时间的限制
@@ -583,8 +610,8 @@
             }
         },
         created () {
-            this.initArray()
-            this.dateTimeInit()
+//            this.initArray()
+//            this.dateTimeInit()
             this.initStatus(this.type)
         },
         mounted () {
@@ -670,13 +697,14 @@
                 display: flex;
                 justify-content: space-between;
                 .icon-left {
-                    transform:rotate(-180deg);
+                    transform: rotate(-180deg);
                 }
                 i {
                     display: inline-block;
                     padding: 16px;
                     font-style: normal;
                     font-size: 22px;
+                    cursor: pointer;
                 }
                 .d-date-time-month {
                     line-height: 50px;
@@ -740,6 +768,7 @@
                 text-align: center;
                 line-height: 36px;
                 font-size: 14px;
+                cursor: pointer;
             }
         }
     }
