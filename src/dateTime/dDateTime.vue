@@ -505,7 +505,6 @@
                 this.yearArr = this.verifyMaxMin(this.produceArr(time.createArray(MINYEAR, MAXYEAR)), 'year')
                 this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                 this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
-                console.log(this.dateArr)
             },
             /**
              * 判断是否存在时间的限制
@@ -604,6 +603,9 @@
                     if (this.max && !this.min && new Date(this.max).getTime() < this.date.getTime()) {
                         this.date = new Date(this.max)
                     } else if (this.min && !this.max && new Date(this.min).getTime() > this.date.getTime()) {
+                        this.date = new Date(this.min)
+                    } else if ((this.min && this.max && new Date(this.min).getTime() > this.date.getTime()) || (this.min && this.max && new Date(this.max).getTime() < this.date.getTime())) {
+//            console.error('The value is not between Min and Max, has to be set to min value')
                         this.date = new Date(this.min)
                     }
                 }
