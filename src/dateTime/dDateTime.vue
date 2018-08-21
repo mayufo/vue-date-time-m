@@ -301,6 +301,7 @@
                 if (this.monthArr[index].able) {
                     this.date = new Date(this.date.getFullYear(), parseInt(this.monthArr[index].value, 10) - 1, this.date.getDate(), this.date.getHours(), this.date.getMinutes())
                     this.dateArr = this.productDateArr(this.date)
+                    this.verifyTime()
                     this.close()
                 }
             },
@@ -398,6 +399,7 @@
                     }
                 }
                 this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
+                this.verifyTime()
             },
 
             /**
@@ -576,9 +578,6 @@
                         this.date = new Date(this.max)
                     } else if (this.min && !this.max && new Date(this.min).getTime() > this.date.getTime()) {
                         this.date = new Date(this.min)
-                    } else if ((this.min && this.max && new Date(this.min).getTime() > this.date.getTime()) || (this.min && this.max && new Date(this.max).getTime() < this.date.getTime())) {
-                        console.error('The value is not between Min and Max, has to be set to min value')
-                        this.date = new Date(this.min)
                     }
                 }
             }
@@ -682,6 +681,7 @@
                 .d-date-time-month {
                     line-height: 50px;
                     font-size: 14px;
+                    cursor: pointer;
                 }
             }
 
