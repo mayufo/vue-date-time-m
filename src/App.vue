@@ -113,7 +113,6 @@
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show1">{{date1}}</div>
                             <date-time ref="dateTime1"
-                                       value="2018/08/27 00:59"
                                        @confirm="select1"></date-time>
                         </div>
                         <p>默认值， 展示年月日时分</p>
@@ -213,8 +212,8 @@
                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                &lt;date-time ref="dateTime6"
                           type="dateTime"
-                          min="2018/08/21 15:28"
-                          max="2018/09/21 14:58"
+                           min="2018/08/21 15:28"
+                           max="2018/08/27 14:05"
                           @confirm="select"
                           textAlign="center"
                           color="#417df4">
