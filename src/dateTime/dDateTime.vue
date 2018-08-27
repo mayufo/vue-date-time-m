@@ -75,9 +75,10 @@
                             <div class="d-date-time-time-wrap" v-if="status === 'time'">
                                 <i v-if="type !=='time'" class="d-data-time-close iconfont icon-close"
                                    @click="close"></i>
-                                <d-date-time-pick-hm :date="date"
-                                                     @changeHour="changeHour"
-                                                     @changeMinute="changeMinute"
+                                <d-date-time-pick-hm :hoursArr="hoursArr"
+                                                     :minutesArr="minutesArr"
+                                                     :color="color"
+                                                     @click="changeTime"
                                 ></d-date-time-pick-hm>
                             </div>
                         </div>
@@ -98,7 +99,7 @@
     import DDateTimeCard from './components/dDateTimeCard.vue'
     import DDateTimePickYear from './components/dDateTimePickYear'
     import DDateTimePickHm from './components/dDateTimePickHm'
-    import {WEEKS, MONTH, SHOWDAY, MINYEAR, MAXYEAR} from './config/config'
+    import {WEEKS, MONTH, SHOWDAY, MINYEAR, MAXYEAR, HOURS, MINUTES} from './config/config'
     import time from './utils/dateTime'
     import '../../assets/style.css'
 
@@ -111,6 +112,8 @@
                 yearArr: [],
                 monthArr: [],
                 dateArr: [],
+                hoursArr: [],
+                minutesArr: [],
                 status: '',
                 isShow: false,
                 formatDate: '',
@@ -321,35 +324,22 @@
                 }
             },
             /**
-             * 改变小时
+             * 改变时间
              */
-            changeHour (param) {
-                if (param === 'last') {
-                    let lastTime = time.changeHour(this.date, this.date.getHours() - 1)
-                    if (!this.min || (this.min && new Date(this.min).getTime() <= lastTime.getTime())) {
-                        this.date = lastTime
+            changeTime (index, type) {
+                if (type === 'hour' && !this.hoursArr[index].isSelect) {
+                    let tmp = time.changeHour(this.date, this.hoursArr[index].value)
+                    if (this.max && new Date(this.max).getTime() < tmp.getTime()) {
+                        this.date = tmp
+                        this.date = time.changeMinute(this.date, 0)
+                    } else if (this.min && new Date(this.min).getTime() > tmp.getTime()) {
+                        this.date = tmp
+                        this.date = time.changeMinute(this.date, 59)
+                    } else {
+                        this.date = tmp
                     }
-                } else if (param === 'next') {
-                    let nextTime = time.changeHour(this.date, this.date.getHours() + 1)
-                    if (!this.max || (this.max && new Date(this.max).getTime() >= nextTime.getTime())) {
-                        this.date = nextTime
-                    }
-                }
-            },
-            /**
-             * 改变分钟
-             */
-            changeMinute (param) {
-                if (param === 'last') {
-                    let lastTime = time.changeMinute(this.date, this.date.getMinutes() - 1)
-                    if (!this.min || (this.min && new Date(this.min).getTime() <= lastTime.getTime())) {
-                        this.date = lastTime
-                    }
-                } else if (param === 'next') {
-                    let nextTime = time.changeMinute(this.date, this.date.getMinutes() + 1)
-                    if (!this.max || (this.max && new Date(this.max).getTime() >= nextTime.getTime())) {
-                        this.date = nextTime
-                    }
+                } else if (type === 'minute') {
+                    this.date = time.changeMinute(this.date, this.minutesArr[index].value)
                 }
             },
             /**
@@ -385,10 +375,13 @@
              */
             verifyTime () {
                 if (this.max && (new Date(this.max)).getTime() < this.date.getTime()) {
-                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 0, 0)
+//                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 0, 0)
+                    this.date = new Date(this.max)
                 }
                 if (this.min && (new Date(this.min)).getTime() > this.date.getTime()) {
-                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 23, 59)
+//                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 23, 59)
+                    this.date = new Date(this.min)
+
                 }
             },
             /**
@@ -458,9 +451,37 @@
              * 当date有所改变，需要重现渲染
              */
             dateTimeInit () {
-                this.activeDay(this.date.getDate())
-                this.activeMonth(this.date.getMonth())
                 this.activeYear(this.date.getFullYear())
+                this.activeMonth(this.date.getMonth())
+                this.activeDay(this.date.getDate())
+                this.activeHour(this.date.getHours())
+                this.activeMinute(this.date.getMinutes())
+            },
+            /**
+             * 渲染选中的分钟
+             * @param minutes
+             */
+            activeMinute (minutes) {
+                this.arrayDefault(this.minutesArr)
+                let tmp = minutes < 10 ? `0${minutes}` : minutes.toString()
+                this.minutesArr.forEach((item) => {
+                    if (item.value === tmp && item.able) {
+                        item.isSelect = true
+                    }
+                })
+            },
+            /**
+             * 渲染选中的小时
+             * @param hour
+             */
+            activeHour (hour) {
+                this.arrayDefault(this.hoursArr)
+                let tmp = hour < 10 ? `0${hour}` : hour.toString()
+                this.hoursArr.forEach((item) => {
+                    if (item.value === tmp && item.able) {
+                        item.isSelect = true
+                    }
+                })
             },
             /**
              * 渲染选中的天
@@ -498,6 +519,7 @@
                     }
                 })
             },
+
             /**
              * 创建渲染的日，月，年列表
              */
@@ -505,6 +527,8 @@
                 this.yearArr = this.verifyMaxMin(this.produceArr(time.createArray(MINYEAR, MAXYEAR)), 'year')
                 this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                 this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
+                this.hoursArr = this.verifyMaxMin(this.produceArr(HOURS), 'hour')
+                this.minutesArr = this.verifyMaxMin(this.produceArr(MINUTES), 'minute')
             },
             /**
              * 判断是否存在时间的限制
@@ -533,9 +557,10 @@
              */
             addMinDisable (arr, type, min) {
                 let minDate
+                let minGetTime = new Date(this.min).getTime()
                 if (type === 'month') {
                     minDate = arr.findIndex((item, index) => {
-                        return new Date(this.min).getTime() < new Date(this.date.getFullYear(), index).getTime()
+                        return minGetTime < new Date(this.date.getFullYear(), index).getTime()
                     })
                     minDate--
                 } else if (type === 'year') {
@@ -545,8 +570,20 @@
                     })
                 } else if (type === 'day') {
                     minDate = arr.findIndex((item) => {
-                        return item.isMonth && new Date(this.min).getTime() <= new Date(this.date.getFullYear(), this.date.getMonth(), item.value, this.date.getHours(), this.date.getMinutes()).getTime()
+                        return item.isMonth && minGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), item.value).getTime()
                     })
+                    minDate--
+                } else if (type === 'hour') {
+                    minDate = arr.findIndex((item) => {
+                        return minGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), parseInt(item.value, 10)).getTime()
+                    })
+                    minDate--
+                } else if (type === 'minute') {
+                    new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), this.date.getHours(),)
+                    minDate = arr.findIndex((item) => {
+                        return minGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), this.date.getHours(), parseInt(item.value, 10)).getTime()
+                    })
+                    minDate--
                 }
 
                 if (minDate <= -1) {
@@ -569,9 +606,10 @@
              */
             addMaxDisable (arr, type, max) {
                 let maxDate
+                let maxGetTime = new Date(this.max).getTime()
                 if (type === 'month') {
                     maxDate = arr.findIndex((item, index) => {
-                        return new Date(this.max).getTime() < new Date(this.date.getFullYear(), index).getTime()
+                        return maxGetTime < new Date(this.date.getFullYear(), index).getTime()
                     })
                     maxDate--
                 } else if (type === 'year') {
@@ -581,8 +619,19 @@
                     })
                 } else if (type === 'day') {
                     maxDate = arr.findIndex((item) => {
-                        return item.isMonth && new Date(this.max).getTime() <= new Date(this.date.getFullYear(), this.date.getMonth(), item.value, 23, 59).getTime()
+                        return item.isMonth && maxGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), item.value).getTime()
                     })
+                    maxDate--
+                } else if (type === 'hour') {
+                    maxDate = arr.findIndex((item) => {
+                        return maxGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), parseInt(item.value, 10)).getTime()
+                    })
+                    maxDate--
+                } else if (type === 'minute') {
+                    maxDate = arr.findIndex((item) => {
+                        return maxGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), this.date.getHours(), parseInt(item.value, 10)).getTime()
+                    })
+                    maxDate--
                 }
                 if (maxDate <= -1) {
                     maxDate = arr.length
@@ -612,8 +661,6 @@
             }
         },
         created () {
-//            this.initArray()
-//            this.dateTimeInit()
             this.initStatus(this.type)
         },
         mounted () {
@@ -743,8 +790,8 @@
             }
 
             .d-date-time-time-wrap {
-                padding: 60px 0;
-                height: 168px;
+                /*padding: 60px 0;*/
+                /*height: 168px;*/
 
             }
             .d-data-time-close {

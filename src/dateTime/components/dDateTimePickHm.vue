@@ -1,173 +1,159 @@
 <!--选择时分-->
 <template>
     <div class="d-date-time-time-content">
-        <div class="d-date-time-item-wrap">
-            <div @click="changeHour('last')">
-                <i class="iconfont icon-arrow icon-up"></i>
-            </div>
-
-            <div class="d-date-time-item">
-                <div class="d-date-time-cell">{{hour1}}</div>
-                <div class="d-date-time-cell">{{hour2}}</div>
-            </div>
-
-            <div @click="changeHour('next')">
-                <slot name="nextMinutes">
-                    <i class="iconfont icon-arrow icon-down"></i>
-                </slot>
-            </div>
+        <div ref="scrollHours" class="scroll hours-wrap">
+            <ul class="scroll-wrapper">
+                <li v-for="(item, index) in hoursArr"
+                    :key="index"
+                    class="hours-item"
+                    @click="select(item, index, 'hour')">
+                    <!--选中-->
+                    <div v-if="item.isSelect"
+                         class="selected"
+                         :style="{color: color}">{{item.value}}
+                    </div>
+                    <!--没有选中-->
+                    <div v-else :class="{disable: !item.able}">{{item.value}}</div>
+                </li>
+            </ul>
         </div>
-
-        <div class="d-date-time-time-dot">:</div>
-
-        <div class="d-date-time-item-wrap">
-            <div @click="changeMinute('last')">
-                <i class="iconfont icon-arrow icon-up"></i>
-            </div>
-            <div class="d-date-time-item">
-                <div class="d-date-time-cell">{{minutes1}}</div>
-                <div class="d-date-time-cell">{{minutes2}}</div>
-            </div>
-            <div @click="changeMinute('next')">
-                <slot name="nextMinutes">
-                    <i class="iconfont icon-arrow icon-down"></i>
-                </slot>
-            </div>
-            <div>
-            </div>
+        <div ref="scrollMinutes" class="scroll minutes-wrap">
+            <ul class="scroll-wrapper">
+                <li v-for="(item, index) in minutesArr"
+                    :key="index"
+                    class="minutes-item"
+                    :class="{selected: item.isSelect}"
+                    @click="select(item, index, 'minute')">
+                    <!--选中-->
+                    <div v-if="item.isSelect"
+                         class="selected"
+                         :style="{color: color}">{{item.value}}
+                    </div>
+                    <!--没有选中-->
+                    <div v-else :class="{disable: !item.able}">{{item.value}}</div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
 
 <script>
-    import time from '../utils/dateTime'
-
+    import BScroll from 'better-scroll'
     export default {
         name: 'dDateTimePickHm',
-        data () {
-            return {
-                show: true,
-                docState: 'saved'
-            }
-        },
         props: {
-            date: {
-                type: Date,
-                default: new Date()
-            }
+            hoursArr: {
+                type: Array,
+                default: () => []
+            },
+            minutesArr: {
+                type: Array,
+                default: () => []
+            },
+            color: {type: String, 'default': '#50c7a7'},
+
         },
-        computed: {
-            buttonMessage () {
-                switch (this.docState) {
-                    case 'saved':
-                        return 'Edit'
-                    case 'edited':
-                        return 'Save'
-                    case 'editing':
-                        return 'Cancel'
-                }
-            },
-            hour1 () {
-                return String(time.formatTime(this.date.getHours())).charAt(0)
-            },
-            hour2 () {
-                return String(time.formatTime(this.date.getHours())).charAt(1)
-            },
-            minutes1 () {
-                return String(time.formatTime(this.date.getMinutes())).charAt(0)
-            },
-            minutes2 () {
-                return String(time.formatTime(this.date.getMinutes())).charAt(1)
-            }
+        mounted () {
+            this.scrollHours = new BScroll(this.$refs.scrollHours, {
+                mouseWheel: true,
+                probeType: 3,
+                click: true
+            })
+            this.scrollMinutes = new BScroll(this.$refs.scrollMinutes, {
+                mouseWheel: true,
+                probeType: 3,
+                click: true
+            })
+            setTimeout(() => {
+                this.scrollHour()
+                this.scrollMinute()
+            }, 200)
         },
         methods: {
-            change () {
-                this.show = !this.show
+            select (item, index, type) {
+                if (item.able) {
+                    this.$emit('click', index, type)
+                }
             },
-            changeHour (param) {
-                this.$emit('changeHour', param)
+            scrollHour () {
+                let index = this.hoursArr.findIndex((item) => {
+                    return item.isSelect
+                })
+                if (index > 3 && index < this.hoursArr.length - 4) {
+                    this.scrollHours.scrollTo(0, 0 - document.querySelector('.hours-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2), 300, 'bounce')
+                } else if (index >= this.hoursArr.length - 4) {
+                    this.scrollHours.scrollTo(0, 0 - document.querySelector('.hours-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2 + 90), 300, 'bounce')
+                }
             },
-            changeMinute (param) {
-                this.$emit('changeMinute', param)
+            scrollMinute () {
+                let index = this.minutesArr.findIndex((item) => {
+                    return item.isSelect
+                })
+                if (index > 3 && index < this.minutesArr.length - 4) {
+                    this.scrollMinutes.scrollTo(0, 0 - document.querySelector('.minutes-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2), 300, 'bounce')
+                } else if (index >= this.minutesArr.length - 4) {
+                    this.scrollMinutes.scrollTo(0, 0 - document.querySelector('.minutes-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2 + 90 ), 300, 'bounce')
+                }
             }
-        },
-        components: {
-//      MScroll
         }
     }
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
     .d-date-time-time-content {
+        overflow: hidden;
         display: flex;
+        height: 260px;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        padding: 36px 0 0 0;
         justify-content: center;
-        i {
-            font-size: 26px;
-            color: #a2a2a2;
-            display: inline-block;
-            width: 158px;
-            text-align: center;
-            z-index: 100;
-            line-height: 40px;
-            touch-action: none;
+        .hours-wrap {
+            margin-right: 60px;
         }
-        .d-date-time-time-dot {
-            font-size: 60px;
-            color: #a2a2a2;
-            line-height: 150px;
-            position: absolute;
-        }
-        .d-date-time-item-wrap {
-            flex-direction: column;
-            width: 158px;
-            i {
-                cursor: pointer;;
-            }
-            .icon-up {
-                transform: rotate(-90deg);
-            }
-            .icon-down {
-                transform: rotate(90deg);
-            }
-        }
-        .d-date-time-item {
-            display: flex;
-            justify-content: center;
-            .d-date-time-cell {
-                color: #a2a2a2;
-                font-size: 90px;
-                position: relative;
-                transition: all 300ms ease-in-out;
-            }
-        }
-
-        /* 可以设置不同的进入和离开动画 */
-        /* 设置持续时间和动画函数 */
-        .slide-fade-enter-active {
-            position: absolute;
+        .scroll {
+            background-color: #fff;
             top: 0;
-            bottom: 0;
-            right: 0;
             left: 0;
-            opacity: 1;
-            transform: translateY(0);
-            transition: all .3s ease-in-out;
-        }
-        .slide-fade-leave-active {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            opacity: 1;
-            transform: translateY(0);
-            transition: all .3s ease-in-out;
-        }
-        .slide-fade-enter, .slide-fade-leave-to
-            /* .slide-fade-leave-active for below version 2.1.8 */
-        {
-            /*transform: translateX(10px);*/
-            opacity: 0;
+            overflow: hidden;
+            .scroll-wrapper {
+                display: flex;
+                overflow: hidden;
+                flex-wrap: wrap;
+                flex-direction: column;
+                .hours-item {
+                    line-height: 1.5;
+                    > div {
+                        font-size: 20px;
+                        margin: 0 32px;
+                    }
+                    .selected {
+                        font-size: 30px;
+                        font-weight: bold;
+                        position: relative;
+                        left: -6px;
+                    }
+                    .disable {
+                        color: #b9b9b9;
+                    }
+                }
+                .minutes-item {
+                    line-height: 1.5;
+                    > div {
+                        font-size: 18px;
+                        margin: 0 32px;
+                    }
+                    .selected {
+                        font-size: 26px;
+                        font-weight: bold;
+                        position: relative;
+                        left: -6px;
+                    }
+                    .disable {
+                        color: #b9b9b9;
+                    }
+                }
+            }
         }
     }
 </style>

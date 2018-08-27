@@ -1,6 +1,15 @@
 <!--时间组件带时分-->
 <template>
     <div id="app">
+        <!--<div class="select" @click="showPicker()" ref="select1">{{ selectedText[0] }}</div>-->
+        <!--<d-picker-->
+                <!--@select="handleSelect(arguments)"-->
+                <!--:data="demo"-->
+                <!--ref="picker1"-->
+                <!--title="标题"-->
+                <!--cancelTxt="取消"-->
+                <!--confirmTxt="确定"-->
+                <!--:selected-index="[1, 0]"></d-picker>-->
         <div class="date-time-wrap">
             <h1>vue date time</h1>
             <!--安装-->
@@ -21,7 +30,7 @@
                 </div>
 
                 <p>or in component</p>
-                <pre v-highlightjs >
+                <pre v-highlightjs>
         <code class="javascript">
           &lt;template>
             &lt;div class="date-time-item">
@@ -102,7 +111,7 @@
                     <!-- 1 默认值-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs >
+            <pre highlightjs>
               <code class="html">
                 &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time  ref="dateTime"
@@ -113,6 +122,7 @@
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show1">{{date1}}</div>
                             <date-time ref="dateTime1"
+                                       value="2018/08/27 00:59"
                                        @confirm="select1"></date-time>
                         </div>
                         <p>默认值， 展示年月日时分</p>
@@ -120,7 +130,7 @@
                     <!--2 format的改变-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs >
+            <pre highlightjs>
               <code class="html">
                 &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
@@ -137,8 +147,8 @@
                             <date-time ref="dateTime2"
                                        @confirm="select2"
                                        format="yyyy年MM月dd日 hh小时mm分">
-                               <div slot="prevMonth"> <i>-</i> </div>
-                               <div slot="nextMonth"> <i>+</i> </div>
+                                <div slot="prevMonth"><i>-</i></div>
+                                <div slot="nextMonth"><i>+</i></div>
 
                             </date-time>
                         </div>
@@ -147,7 +157,7 @@
                     <!--3 只选择年月日-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs >
+            <pre highlightjs>
               <code class="html">
                 &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
@@ -167,7 +177,7 @@
                     <!--4 只选择年-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs >
+            <pre highlightjs>
               <code class="html">
                 &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
@@ -187,7 +197,7 @@
                     <!--5-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs >
+            <pre highlightjs>
               <code class="html">
                 &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                 &lt;date-time ref="dateTime"
@@ -228,7 +238,7 @@
                             <date-time ref="dateTime6"
                                        type="dateTime"
                                        min="2018/08/21 15:28"
-                                       max="2018/09/21 14:58"
+                                       max="2018/08/27 14:05"
                                        @confirm="select6"
                                        textAlign="center"
                                        color="#417df4">
@@ -246,6 +256,9 @@
 </template>
 
 <script>
+
+    //    import time from '../utils/dateTime'
+
     export default {
         name: 'App',
         data () {
@@ -255,11 +268,18 @@
                 date3: '',
                 date4: '',
                 date5: '',
-                date6: ''
+                date6: '',
+                demo: [data1, data2],
+                selectedText: ['滚动选择1', '滚动选择2', '滚动选择3', '滚动选择4']
             }
         },
-
         methods: {
+            handleSelect(args) {
+                console.log(args)
+            },
+            showPicker() {
+                this.$refs['picker1'].show()
+            },
             show1 () {
                 this.$refs.dateTime1.show()
             },
@@ -333,11 +353,9 @@
             overflow-x: auto;
         }
 
-
         p {
             padding-bottom: 10px;
         }
-
 
         .date-time-demo {
             .item-demo {
