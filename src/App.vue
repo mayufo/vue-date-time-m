@@ -1,15 +1,6 @@
 <!--时间组件带时分-->
 <template>
     <div id="app">
-        <!--<div class="select" @click="showPicker()" ref="select1">{{ selectedText[0] }}</div>-->
-        <!--<d-picker-->
-                <!--@select="handleSelect(arguments)"-->
-                <!--:data="demo"-->
-                <!--ref="picker1"-->
-                <!--title="标题"-->
-                <!--cancelTxt="取消"-->
-                <!--confirmTxt="确定"-->
-                <!--:selected-index="[1, 0]"></d-picker>-->
         <div class="date-time-wrap">
             <h1>vue date time</h1>
             <!--安装-->
@@ -122,7 +113,6 @@
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show1">{{date1}}</div>
                             <date-time ref="dateTime1"
-                                       value="2018/08/27 00:59"
                                        @confirm="select1"></date-time>
                         </div>
                         <p>默认值， 展示年月日时分</p>
@@ -222,8 +212,8 @@
                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
                &lt;date-time ref="dateTime6"
                           type="dateTime"
-                          min="2018/08/21 15:28"
-                          max="2018/09/21 14:58"
+                           min="2018/08/21 15:28"
+                           max="2018/08/27 14:05"
                           @confirm="select"
                           textAlign="center"
                           color="#417df4">
