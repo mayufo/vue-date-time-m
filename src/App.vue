@@ -1,15 +1,6 @@
 <!--时间组件带时分-->
 <template>
     <div id="app">
-        <!--<div class="select" @click="showPicker()" ref="select1">{{ selectedText[0] }}</div>-->
-        <!--<d-picker-->
-                <!--@select="handleSelect(arguments)"-->
-                <!--:data="demo"-->
-                <!--ref="picker1"-->
-                <!--title="标题"-->
-                <!--cancelTxt="取消"-->
-                <!--confirmTxt="确定"-->
-                <!--:selected-index="[1, 0]"></d-picker>-->
         <div class="date-time-wrap">
             <h1>vue date time</h1>
             <!--安装-->
@@ -256,9 +247,6 @@
 </template>
 
 <script>
-
-    //    import time from '../utils/dateTime'
-
     export default {
         name: 'App',
         data () {
@@ -269,17 +257,9 @@
                 date4: '',
                 date5: '',
                 date6: '',
-                demo: [data1, data2],
-                selectedText: ['滚动选择1', '滚动选择2', '滚动选择3', '滚动选择4']
             }
         },
         methods: {
-            handleSelect(args) {
-                console.log(args)
-            },
-            showPicker() {
-                this.$refs['picker1'].show()
-            },
             show1 () {
                 this.$refs.dateTime1.show()
             },

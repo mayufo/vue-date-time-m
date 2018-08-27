@@ -123,6 +123,7 @@
                 flex-direction: column;
                 .hours-item {
                     line-height: 1.5;
+                    cursor: pointer;
                     > div {
                         font-size: 20px;
                         margin: 0 32px;
@@ -132,6 +133,7 @@
                         font-weight: bold;
                         position: relative;
                         left: -6px;
+                        transition: font-size .3s;
                     }
                     .disable {
                         color: #b9b9b9;
@@ -139,6 +141,7 @@
                 }
                 .minutes-item {
                     line-height: 1.5;
+                    cursor: pointer;
                     > div {
                         font-size: 18px;
                         margin: 0 32px;
@@ -148,6 +151,7 @@
                         font-weight: bold;
                         position: relative;
                         left: -6px;
+                        transition: font-size .3s;
                     }
                     .disable {
                         color: #b9b9b9;
