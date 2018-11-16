@@ -217,7 +217,7 @@
         methods: {
             initDate() {
                 let date = this.value ? new Date(this.value) : new Date()
-                if (this.type === 'noMinute' || this.minutesInterval) {
+                if (this.type === 'noMinute' || this.minutesInterval !== 1) {
                     date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0)
                 }
                 return date
@@ -413,12 +413,16 @@
              */
             verifyTime() {
                 if (this.max && (new Date(this.max)).getTime() < this.date.getTime()) {
-//                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 0, 0)
                     this.date = new Date(this.max)
+                    if (this.minutesInterval > 1) {
+                        this.date = new Date(new Date(this.max).getFullYear(), new Date(this.max).getMonth(), new Date(this.max).getDate(), new Date(this.max).getHours(), 0)
+                    }
                 }
                 if (this.min && (new Date(this.min)).getTime() > this.date.getTime()) {
-//                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 23, 59)
                     this.date = new Date(this.min)
+                    if (this.minutesInterval > 1) {
+                        this.date = new Date(new Date(this.min).getFullYear(), new Date(this.min).getMonth(), new Date(this.min).getDate(), new Date(this.min).getHours(), 0)
+                    }
 
                 }
             },
@@ -688,13 +692,23 @@
                     console.error('Min than Max value. Please check')
                 } else {
                     if (this.max && !this.min && new Date(this.max).getTime() < this.date.getTime()) {
+                        if (this.minutesInterval > 1) {
+                            this.date = new Date(new Date(this.max).getFullYear(), new Date(this.max).getMonth(), new Date(this.max).getDate(), new Date(this.max).getHours(), 0)
+                        }
                         this.date = new Date(this.max)
                     } else if (this.min && !this.max && new Date(this.min).getTime() > this.date.getTime()) {
                         this.date = new Date(this.min)
+                        if (this.minutesInterval > 1) {
+                            this.date = new Date(new Date(this.min).getFullYear(), new Date(this.min).getMonth(), new Date(this.min).getDate(), new Date(this.min).getHours(), 0)
+                        }
                     } else if ((this.min && this.max && new Date(this.min).getTime() > this.date.getTime()) || (this.min && this.max && new Date(this.max).getTime() < this.date.getTime())) {
 //            console.error('The value is not between Min and Max, has to be set to min value')
                         this.date = new Date(this.min)
+                        if (this.minutesInterval > 1) {
+                            this.date = new Date(new Date(this.min).getFullYear(), new Date(this.min).getMonth(), new Date(this.min).getDate(), new Date(this.min).getHours(), 0)
+                        }
                     }
+
                 }
             }
         },
