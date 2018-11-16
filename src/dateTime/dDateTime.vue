@@ -14,10 +14,14 @@
                             <div class="d-date-time-value"
                                  :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}">
                                 {{showDate}}
+                                <span v-if="type === 'year'">年</span>
+                                <span v-if="type === 'month'">月</span>
+                                <span v-if="type === 'day'">日</span>
+                                <!--<span v-if="type === 'noMinute'">:00</span>-->
                             </div>
                         </div>
-                        <div class="d-date-time-content">
-                            <div class="d-date-time-months" v-if="status === 'day'">
+                        <div class="d-date-time-content" :class="{dayTop: type === 'day'}">
+                            <div class="d-date-time-months" v-if="status === 'day' && type !== 'day'">
                                 <div @click="changeMonth('last')">
                                     <slot name="prevMonth">
                                         <i class="iconfont icon-arrow icon-left"></i>
@@ -77,7 +81,9 @@
                                    @click="close"></i>
                                 <d-date-time-pick-hm :hoursArr="hoursArr"
                                                      :minutesArr="minutesArr"
+                                                     :minutesInterval="minutesInterval"
                                                      :color="color"
+                                                     :type="type"
                                                      @click="changeTime"
                                 ></d-date-time-pick-hm>
                             </div>
@@ -105,9 +111,9 @@
 
     export default {
         name: 'dDateTime',
-        data () {
+        data() {
             return {
-                date: this.value ? new Date(this.value) : new Date(),
+                date: this.initDate(),
                 weeks: this.produceArr(WEEKS),
                 yearArr: [],
                 monthArr: [],
@@ -117,16 +123,18 @@
                 status: '',
                 isShow: false,
                 formatDate: '',
-                confirmDate: '' // 确认后的时间
+                confirmDate: '', // 确认后的时间
             }
         },
         props: {
             /**
              * dateTime 显示 年月日时分,默认值
              * date     显示 年月日
+             * noMinute 显示 年月日时
              * time     显示 时分
              * year     显示 年
              * month    显示 月
+             * day      显示 日
              */
             type: {type: [String], default: 'dateTime'},
             /**
@@ -159,47 +167,71 @@
             /**
              * 时间的对齐方式
              */
-            textAlign: {type: [String], 'default': 'left'}
+            textAlign: {type: [String], 'default': 'left'},
+            /**
+             * 分钟间隔 默认是一分钟
+             */
+            minutesInterval: {type: [Number], 'default': 1}
         },
         watch: {
-            date () {
+            date() {
                 this.initArray()
             },
-            dateArr () {
+            dateArr() {
                 this.dateTimeInit()
             }
         },
         computed: {
-            showToday () {
+            showToday() {
                 if (this.max) {
                     return (new Date()).getTime() < new Date(this.max).getTime()
                 } else {
                     return true
                 }
             },
-            showDate () {
+            showDate() {
                 return time.format(this.date, this.formatDate)
             },
-            year () {
+            year() {
                 return this.date.getFullYear()
             },
-            month () {
+            month() {
                 return this.date.getMonth() + 1
             },
-            hour () {
-                return time.formatTime(this.date.getHours())
-            },
-            minutes () {
-                return time.formatTime(this.date.getMinutes())
+            minutes() {
+                if (MINUTES.length % this.minutesInterval === 0) {
+                    let arr = []
+                    for (let i = 0; i < MINUTES.length; i = i + this.minutesInterval) {
+                        arr.push(MINUTES[i])
+                    }
+                    return arr
+                } else {
+                    return MINUTES
+                }
+
             }
         },
+        created() {
+            this.initStatus(this.type)
+        },
         methods: {
+            initDate() {
+                let date = this.value ? new Date(this.value) : new Date()
+                if (this.type === 'noMinute' || this.minutesInterval) {
+                    date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0)
+                }
+                return date
+            },
             /**
              * 根据给的类型，初始化开始显示面板，和时间格式
              */
-            initStatus (type) {
+            initStatus(type) {
                 switch (type) {
                     case 'dateTime':
+                        this.status = 'day'
+                        this.formatDate = 'yyyy/MM/dd hh:mm'
+                        break
+                    case 'noMinute':
                         this.status = 'day'
                         this.formatDate = 'yyyy/MM/dd hh:mm'
                         break
@@ -219,6 +251,10 @@
                         this.status = 'month'
                         this.formatDate = 'MM'
                         break
+                    case 'day':
+                        this.status = 'day'
+                        this.formatDate = 'dd'
+                        break
                 }
                 if (this.format) {
                     this.formatDate = this.format
@@ -227,7 +263,7 @@
             /**
              * 确认
              */
-            confirm () {
+            confirm() {
                 this.confirmDate = this.date
                 this.$emit('confirm', time.format(this.confirmDate, this.formatDate))
                 this.hide()
@@ -235,34 +271,36 @@
             /**
              * 现在
              */
-            now () {
-                this.date = new Date()
+            now() {
+                if (this.type === 'noMinute' || this.minutesInterval) {
+                    this.date = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(), 0)
+                } else {
+                    this.date = new Date()
+                }
             },
             /**
              * 显示时间组件
              */
-            show () {
+            show() {
                 this.isShow = true
                 if (this.confirmDate) {
                     this.date = this.confirmDate
-                } else if (this.value) {
-                    this.date = new Date(this.value)
                 } else {
-                    this.date = new Date()
+                    this.date = this.initDate()
                 }
                 this.verifyDate()
             },
             /**
              * 隐藏时间组件
              */
-            hide () {
+            hide() {
                 this.isShow = false
                 this.close()
             },
             /**
              * 产生日期数组
              */
-            productDateArr (date) {
+            productDateArr(date) {
                 let thisMonthArr = this.produceArr(time.createArray(1, time.getDaysInOneMonth(date)), true)
                 let lastMonthArr = this.produceArr(time.createArray(1, time.getDaysInOneMonth(date, 'last')))
                 let nextMonthArr = this.produceArr(time.createArray(1, time.getDaysInOneMonth(date, 'next')))
@@ -282,7 +320,7 @@
             /**
              * 选择年
              */
-            chooseYear (index) {
+            chooseYear(index) {
                 if (this.yearArr[index].able) {
                     let tmp = new Date(this.yearArr[index].value, this.date.getMonth(), this.date.getDate(), this.date.getHours(), this.date.getMinutes())
                     if (this.max && tmp.getTime() > new Date(this.max).getTime()) {
@@ -298,7 +336,7 @@
             /**
              * 选择日期
              */
-            chooseDay (index) {
+            chooseDay(index) {
                 if (this.dateArr[index].isMonth && this.dateArr[index].able) {
                     this.date = time.changeDay(this.date, this.dateArr[index].value)
                     this.selectTime()
@@ -307,7 +345,7 @@
             /**
              * 选择月份
              */
-            chooseMonth (index) {
+            chooseMonth(index) {
                 if (this.monthArr[index].able) {
                     let tmp = new Date(this.date.getFullYear(), parseInt(this.monthArr[index].value, 10) - 1, this.date.getDate(), this.date.getHours(), this.date.getMinutes())
                     if (this.max && tmp.getTime() > new Date(this.max)) {
@@ -326,7 +364,7 @@
             /**
              * 改变时间
              */
-            changeTime (index, type) {
+            changeTime(index, type) {
                 if (type === 'hour' && !this.hoursArr[index].isSelect) {
                     let tmp = time.changeHour(this.date, this.hoursArr[index].value)
                     if (this.max && new Date(this.max).getTime() < tmp.getTime()) {
@@ -345,7 +383,7 @@
             /**
              * 展示选择年的选项卡
              */
-            selectYear () {
+            selectYear() {
                 if (this.type === 'year' || this.type === 'dateTime' || this.type === 'date') {
                     this.status = 'year'
                     this.activeYear(this.date.getFullYear())
@@ -354,7 +392,7 @@
             /**
              * 展示选择月的选项卡
              */
-            selectMonth () {
+            selectMonth() {
                 if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date') {
                     this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                     this.activeMonth(this.date.getMonth())
@@ -364,8 +402,8 @@
             /**
              * 展示选择时间的选项卡
              */
-            selectTime () {
-                if (this.type === 'dateTime' || this.type === 'time') {
+            selectTime() {
+                if (this.type === 'dateTime' || this.type === 'time' || this.type === 'noMinute') {
                     this.status = 'time'
                     this.verifyTime()
                 }
@@ -373,7 +411,7 @@
             /**
              * 验证时间
              */
-            verifyTime () {
+            verifyTime() {
                 if (this.max && (new Date(this.max)).getTime() < this.date.getTime()) {
 //                    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), 0, 0)
                     this.date = new Date(this.max)
@@ -387,8 +425,8 @@
             /**
              * 关闭其他选项卡，展开日期的选项卡
              */
-            close () {
-                if (this.type === 'date' || this.type === 'dateTime') {
+            close() {
+                if (this.type === 'dateTime' || this.type === 'noMinute') {
                     this.status = 'day'
                     this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
                 }
@@ -396,7 +434,7 @@
             /**
              * 点击 下一月或者上一月
              */
-            changeMonth (params) {
+            changeMonth(params) {
                 if (params === 'next') {
                     if ((this.max && new Date(this.max).getTime() > new Date(this.date.getFullYear(), this.date.getMonth() + 1, 1).getTime()) || (!this.max)) {
                         let tmp = time.changeMonth(this.date, this.date.getMonth() + 1)
@@ -425,7 +463,7 @@
              * 清除之前的选中样式
              * @param array
              */
-            arrayDefault (array) {
+            arrayDefault(array) {
                 array.forEach((item) => {
                     item.isSelect = false
                 })
@@ -433,7 +471,7 @@
             /**
              * 组建渲染的数组
              */
-            produceArr (array, isMonth) {
+            produceArr(array, isMonth) {
                 let newArr = []
                 array.forEach((item) => {
                     let obj = {}
@@ -450,7 +488,7 @@
             /**
              * 当date有所改变，需要重现渲染
              */
-            dateTimeInit () {
+            dateTimeInit() {
                 this.activeYear(this.date.getFullYear())
                 this.activeMonth(this.date.getMonth())
                 this.activeDay(this.date.getDate())
@@ -461,7 +499,7 @@
              * 渲染选中的分钟
              * @param minutes
              */
-            activeMinute (minutes) {
+            activeMinute(minutes) {
                 this.arrayDefault(this.minutesArr)
                 let tmp = minutes < 10 ? `0${minutes}` : minutes.toString()
                 this.minutesArr.forEach((item) => {
@@ -474,7 +512,7 @@
              * 渲染选中的小时
              * @param hour
              */
-            activeHour (hour) {
+            activeHour(hour) {
                 this.arrayDefault(this.hoursArr)
                 let tmp = hour < 10 ? `0${hour}` : hour.toString()
                 this.hoursArr.forEach((item) => {
@@ -487,7 +525,7 @@
              * 渲染选中的天
              * @param day
              */
-            activeDay (day) {
+            activeDay(day) {
                 this.arrayDefault(this.dateArr)
                 this.dateArr.forEach((item) => {
                     if (item.value === day && item.isMonth && item.able) {
@@ -499,7 +537,7 @@
              * 渲染选中的月
              * @param month
              */
-            activeMonth (month) {
+            activeMonth(month) {
                 this.arrayDefault(this.monthArr)
                 this.monthArr.forEach((item) => {
                     if (parseInt(item.value, 10) === month + 1) {
@@ -511,7 +549,7 @@
              * 渲染选中的年
              * @param year
              */
-            activeYear (year) {
+            activeYear(year) {
                 this.arrayDefault(this.yearArr)
                 this.yearArr.forEach((item) => {
                     if (item.value === year) {
@@ -523,12 +561,12 @@
             /**
              * 创建渲染的日，月，年列表
              */
-            initArray () {
+            initArray() {
                 this.yearArr = this.verifyMaxMin(this.produceArr(time.createArray(MINYEAR, MAXYEAR)), 'year')
                 this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                 this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
                 this.hoursArr = this.verifyMaxMin(this.produceArr(HOURS), 'hour')
-                this.minutesArr = this.verifyMaxMin(this.produceArr(MINUTES), 'minute')
+                this.minutesArr = this.verifyMaxMin(this.produceArr(this.minutes), 'minute')
             },
             /**
              * 判断是否存在时间的限制
@@ -536,7 +574,7 @@
              * @param type
              * @returns {*}
              */
-            verifyMaxMin (arr, type) {
+            verifyMaxMin(arr, type) {
                 if (!this.min && !this.max) {
                     return arr
                 } else if (this.min && !this.max) {
@@ -555,7 +593,7 @@
              * @param min
              * @returns {*}
              */
-            addMinDisable (arr, type, min) {
+            addMinDisable(arr, type, min) {
                 let minDate
                 let minGetTime = new Date(this.min).getTime()
                 if (type === 'month') {
@@ -604,7 +642,7 @@
              * @param params  是否将默认值清空
              * @returns {*}
              */
-            addMaxDisable (arr, type, max) {
+            addMaxDisable(arr, type, max) {
                 let maxDate
                 let maxGetTime = new Date(this.max).getTime()
                 if (type === 'month') {
@@ -645,7 +683,7 @@
             /**
              * 判断当前date 是否在min 与 max 之间，如果不在将date设置为min
              */
-            verifyDate () {
+            verifyDate() {
                 if (new Date(this.max).getTime() < new Date(this.min).getTime()) {
                     console.error('Min than Max value. Please check')
                 } else {
@@ -659,11 +697,6 @@
                     }
                 }
             }
-        },
-        created () {
-            this.initStatus(this.type)
-        },
-        mounted () {
         },
         components: {
             DDateTimeCard,
@@ -740,6 +773,10 @@
                 justify-content: flex-end;
             }
         }
+        .dayTop {
+            height: 260px !important;
+            padding-top: 40px;
+        }
         .d-date-time-content {
             height: 300px;
             .d-date-time-months {
@@ -805,6 +842,7 @@
                 top: 82px;
                 left: 4px;
                 z-index: 100;
+                cursor: pointer;
             }
 
         }
