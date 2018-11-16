@@ -1,7 +1,7 @@
 <!--选择时分-->
 <template>
     <div class="d-date-time-time-content">
-        <div ref="scrollHours" class="scroll hours-wrap">
+        <div ref="scrollHours" class="scroll hours-wrap" :class="{hoursWrap: type !== 'noMinute'}">
             <ul class="scroll-wrapper">
                 <li v-for="(item, index) in hoursArr"
                     :key="index"
@@ -17,7 +17,7 @@
                 </li>
             </ul>
         </div>
-        <div ref="scrollMinutes" class="scroll minutes-wrap">
+        <div ref="scrollMinutes" class="scroll minutes-wrap" v-show="type === 'time' || type === 'dateTime'">
             <ul class="scroll-wrapper">
                 <li v-for="(item, index) in minutesArr"
                     :key="index"
@@ -39,9 +39,13 @@
 
 <script>
     import BScroll from 'better-scroll'
+
     export default {
         name: 'dDateTimePickHm',
         props: {
+            type: {
+                type: String
+            },
             hoursArr: {
                 type: Array,
                 default: () => []
@@ -51,31 +55,36 @@
                 default: () => []
             },
             color: {type: String, 'default': '#50c7a7'},
-
+            minutesInterval: {type: [Number], 'default': 1}
         },
-        mounted () {
+        mounted() {
             this.scrollHours = new BScroll(this.$refs.scrollHours, {
                 mouseWheel: true,
                 probeType: 3,
                 click: true
             })
-            this.scrollMinutes = new BScroll(this.$refs.scrollMinutes, {
-                mouseWheel: true,
-                probeType: 3,
-                click: true
-            })
+            if (this.type === 'dateTime' || this.type === 'time') {
+                this.scrollMinutes = new BScroll(this.$refs.scrollMinutes, {
+                    mouseWheel: true,
+                    probeType: 3,
+                    click: true
+                })
+            }
+
             setTimeout(() => {
                 this.scrollHour()
-                this.scrollMinute()
+                if ((this.type === 'dateTime' || this.type === 'time') && this.minutesInterval < 15) {
+                    this.scrollMinute()
+                }
             }, 200)
         },
         methods: {
-            select (item, index, type) {
+            select(item, index, type) {
                 if (item.able) {
                     this.$emit('click', index, type)
                 }
             },
-            scrollHour () {
+            scrollHour() {
                 let index = this.hoursArr.findIndex((item) => {
                     return item.isSelect
                 })
@@ -85,14 +94,14 @@
                     this.scrollHours.scrollTo(0, 0 - document.querySelector('.hours-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2 + 90), 300, 'bounce')
                 }
             },
-            scrollMinute () {
+            scrollMinute() {
                 let index = this.minutesArr.findIndex((item) => {
                     return item.isSelect
                 })
                 if (index > 3 && index < this.minutesArr.length - 4) {
                     this.scrollMinutes.scrollTo(0, 0 - document.querySelector('.minutes-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2), 300, 'bounce')
                 } else if (index >= this.minutesArr.length - 4) {
-                    this.scrollMinutes.scrollTo(0, 0 - document.querySelector('.minutes-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2 + 90 ), 300, 'bounce')
+                    this.scrollMinutes.scrollTo(0, 0 - document.querySelector('.minutes-wrap .selected').getBoundingClientRect().top + (document.documentElement.clientHeight / 2 + 90), 300, 'bounce')
                 }
             }
         }
@@ -108,7 +117,8 @@
         position: relative;
         padding: 36px 0 0 0;
         justify-content: center;
-        .hours-wrap {
+
+        .hoursWrap {
             margin-right: 60px;
         }
         .scroll {
