@@ -23,79 +23,79 @@
                 <p>or in component</p>
                 <pre v-highlightjs>
         <code class="javascript">
-          &lt;template>
-            &lt;div class="date-time-item">
-              &lt;div class="date-time-input" @click="show">[[ data ]]&lt;/div>
-              &lt;date-time ref="dateTime"
-                           type="date"
-                           @confirm="select">&lt;/date-time>
-            &lt;/div>
-          &lt;/template>
+        &lt;template>
+        &lt;div class="date-time-item">
+        &lt;div class="date-time-input" @click="show">[[ data ]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="date"
+        @confirm="select">&lt;/date-time>
+        &lt;/div>
+        &lt;/template>
 
-          &lt;script>
-            import DateTime from 'vue-date-time-m'
-            export default {
-              data(){
-                return {
-                  data: ''
-                }
-              },
-              components: {
-                DateTime
-              },
-              methods: {
-                //  展示日期组件
-                show () {
-                  this.$refs.dateTime.show()
-                },
-                // 日期组件回调
-                select (val) {
-                  this.data = val
-                }
-              }
-            }
-          &lt;/script>
+        &lt;script>
+        import DateTime from 'vue-date-time-m'
+        export default {
+        data(){
+        return {
+        data: ''
+        }
+        },
+        components: {
+        DateTime
+        },
+        methods: {
+        //  展示日期组件
+        show () {
+        this.$refs.dateTime.show()
+        },
+        // 日期组件回调
+        select (val) {
+        this.data = val
+        }
+        }
+        }
+        &lt;/script>
 
         </code>
-      </pre>
+        </pre>
             </div>
 
             <div class="date-time-props">
                 <h2>You can also set default values :</h2>
                 <p>main.js</p>
                 <pre v-highlightjs v-pre>
-      <code class="javascript">
+        <code class="javascript">
         import VueDataTimeM from 'vue-data-time-m';
         Vue.use(VueDataTimeM, {
-            name: 'data-time',
-            props: {
-                // dateTime 显示 年月日时分 默认值,
-                // date     显示 年月日
-                // time     显示 时分
-                // year     显示 年
-                // month    显示 月
-                type: 'dateTime',
-                // 希望得到的格式
-                // 默认的颜色 #50c7a7
-                color: '#00acc1',
-                // 有效的起始日期
-                // format 2018/07/03 22:45 min不在可选范围内
-                min:  2018/07/03 22:45,
-                // 有效的截止日期
-                // format 2018/09/03 22:45 max不在可选范围内
-                max: 2018/07/03 22:45,
-                // 日期选中值，默认今天
-                value: 2018/07/05 22:45,
-                // 是否显示现在按钮 默认是true
-                showTodayButton: true,
-                // 默认值left, 可以选left\center\right
-                textAlign: left
-                // 时间间隔 1\2\3\4\5\6\10\12\15\20\30\60
-                minutesInterval: 1
-            }
+        name: 'data-time',
+        props: {
+        // dateTime 显示 年月日时分 默认值,
+        // date     显示 年月日
+        // time     显示 时分
+        // year     显示 年
+        // month    显示 月
+        type: 'dateTime',
+        // 希望得到的格式
+        // 默认的颜色 #50c7a7
+        color: '#00acc1',
+        // 有效的起始日期
+        // format 2018/07/03 22:45 min不在可选范围内
+        min:  2018/07/03 22:45,
+        // 有效的截止日期
+        // format 2018/09/03 22:45 max不在可选范围内
+        max: 2018/07/03 22:45,
+        // 日期选中值，默认今天
+        value: 2018/07/05 22:45,
+        // 是否显示现在按钮 默认是true
+        showTodayButton: true,
+        // 默认值left, 可以选left\center\right
+        textAlign: left
+        // 时间间隔 1\2\3\4\5\6\10\12\15\20\30\60
+        minutesInterval: 1
+        }
         });
-      </code>
-    </pre>
+        </code>
+        </pre>
             </div>
 
             <div class="date-time-demo">
@@ -104,13 +104,13 @@
                     <!-- 1 默认值-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time  ref="dateTime"
-                                      @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time  ref="dateTime"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_demo">{{date_demo}}</div>
@@ -122,17 +122,17 @@
                     <!-- 2 format的改变-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     @confirm="select"
-                                     format="yyyy年MM月dd日 hh小时mm分">
-                    &lt;div slot="prevMonth"> &lt;i>-&lt;/i> &lt;/div>
-                    &lt;div slot="nextMonth"> &lt;i>+&lt;/i> &lt;/div>
-                  &lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        @confirm="select"
+        format="yyyy年MM月dd日 hh小时mm分">
+        &lt;div slot="prevMonth"> &lt;i>-&lt;/i> &lt;/div>
+        &lt;div slot="nextMonth"> &lt;i>+&lt;/i> &lt;/div>
+        &lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_format">{{date_format}}</div>
@@ -149,19 +149,20 @@
                     <!-- 3 只选择年月日-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     type="date"
-                                     @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="date"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_noTime">{{date_noTime}}</div>
                             <date-time ref="dateTime_noTime"
                                        type="date"
+                                       format="yyyy-MM-dd"
                                        @confirm="select_noTime"></date-time>
                         </div>
                         <p>type改变, 只选年月日</p>
@@ -169,14 +170,14 @@
                     <!-- 4 只显示时分-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     type="noMinute"
-                                     @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="noMinute"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_noMinute">{{date_noMinute}}</div>
@@ -189,14 +190,14 @@
                     <!-- 4 只显示时分-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     type="month"
-                                     @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="month"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_time">{{date_time}}</div>
@@ -209,14 +210,14 @@
                     <!-- 5 只选择年-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     type="year"
-                                     @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="year"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_year">{{date_year}}</div>
@@ -229,14 +230,14 @@
                     <!-- 6 只选择月-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     type="date"
-                                     @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="date"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_month">{{date_month}}</div>
@@ -249,14 +250,14 @@
                     <!-- 7 只选择天-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-                &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-                &lt;date-time ref="dateTime"
-                                     type="date"
-                                     @confirm="select">&lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime"
+        type="date"
+        @confirm="select">&lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_day">{{date_month}}</div>
@@ -269,21 +270,21 @@
                     <!-- 8 有限制-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-               &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-               &lt;date-time ref="dateTime6"
-                          type="dateTime"
-                          min="2018/08/21 15:28"
-                          max="2018/09/21 14:58"
-                          @confirm="select"
-                          textAlign="center"
-                          color="#417df4">
-                                &lt;i slot="prevMonth"> < &lt;/i>
-                                &lt;i slot="nextMonth"> > &lt;/i>
-                            &lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime6"
+        type="dateTime"
+        min="2018/08/21 15:28"
+        max="2018/09/21 14:58"
+        @confirm="select"
+        textAlign="center"
+        color="#417df4">
+        &lt;i slot="prevMonth"> < &lt;/i>
+        &lt;i slot="nextMonth"> > &lt;/i>
+        &lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_limit">{{date_limit}}</div>
@@ -303,22 +304,22 @@
                     <!-- 9 能够按照间隔显示时间-->
                     <div class="item-demo">
                         <div class="demo-code">
-            <pre highlightjs>
-              <code class="html">
-               &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-               &lt;date-time ref="dateTime6"
-                          type="dateTime"
-                          min="2018/08/21 15:28"
-                          max="2018/09/21 14:58"
-                          @confirm="select"
-                          textAlign="center"
-                          :minutesInterval="30"
-                          color="#417df4">
-                                &lt;i slot="prevMonth"> < &lt;/i>
-                                &lt;i slot="nextMonth"> > &lt;/i>
-                            &lt;/date-time>
-              </code>
-            </pre>
+        <pre highlightjs>
+        <code class="html">
+        &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
+        &lt;date-time ref="dateTime6"
+        type="dateTime"
+        min="2018/08/21 15:28"
+        max="2018/09/21 14:58"
+        @confirm="select"
+        textAlign="center"
+        :minutesInterval="30"
+        color="#417df4">
+        &lt;i slot="prevMonth"> < &lt;/i>
+        &lt;i slot="nextMonth"> > &lt;/i>
+        &lt;/date-time>
+        </code>
+        </pre>
                         </div>
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_interval">{{date_interval}}</div>
@@ -340,6 +341,17 @@
 
             </div>
         </div>
+
+        <!--<div class="date-time-input" @click="show">{{ data }}&#45;&#45;11</div>-->
+        <!--<date-time-->
+        <!--ref="dateTime"-->
+        <!--type="date"-->
+        <!--@confirm="selectTime"-->
+        <!--format="yyyy-MM-dd"-->
+        <!--color="#8e5e9c"-->
+        <!--:max="max"-->
+        <!--&gt;-->
+        <!--</date-time>-->
     </div>
 </template>
 
@@ -349,7 +361,7 @@
 
     export default {
         name: 'App',
-        data () {
+        data() {
             return {
                 date_demo: '',
                 date_format: '',
@@ -360,68 +372,78 @@
                 date_day: '',
                 date_limit: '',
                 date_interval: '',
-                date_time: ''
+                date_time: '',
+                data: '',
+                max: new Date().toString()
             }
         },
         methods: {
-            show_demo () {
+            //  展示日期组件
+            show() {
+                this.$refs.dateTime.show()
+            },
+            // 日期组件回调
+            selectTime(val) {
+                this.data = val
+            },
+            show_demo() {
                 this.$refs.dateTime_demo.show()
             },
-            select_demo (val) {
+            select_demo(val) {
                 this.date_demo = val
             },
-            show_format () {
+            show_format() {
                 this.$refs.dateTime_format.show()
             },
-            select_format (val) {
+            select_format(val) {
                 this.date_format = val
             },
-            show_noTime () {
+            show_noTime() {
                 this.$refs.dateTime_noTime.show()
             },
-            select_noTime (val) {
+            select_noTime(val) {
                 this.date_noTime = val
             },
-            show_noMinute () {
+            show_noMinute() {
                 this.$refs.dateTime_noMinute.show()
             },
-            select_noMinute (val) {
+            select_noMinute(val) {
                 this.date_noMinute = val
             },
-            show_year () {
+            show_year() {
                 this.$refs.dateTime_year.show()
             },
-            select_year (val) {
+            select_year(val) {
                 this.date_year = val
             },
-            show_month () {
+            show_month() {
                 this.$refs.dateTime_month.show()
             },
-            select_month (val) {
+            select_month(val) {
                 this.date_month = val
             },
-            show_day () {
+            show_day() {
                 this.$refs.dateTime_day.show()
             },
-            select_day (val) {
+            select_day(val) {
                 this.date_day = val
             },
-            show_limit () {
+            show_limit() {
                 this.$refs.dateTime_limit.show()
             },
-            select_limit (val) {
+            select_limit(val) {
                 this.date_limit = val
             },
-            show_interval () {
+            show_interval() {
                 this.$refs.dateTime_interval.show()
             },
-            select_interval (val) {
+            select_interval(val) {
                 this.date_interval = val
             },
-            show_time () {
+            show_time() {
                 this.$refs.dateTime_time.show()
             },
-            select_time (val) {
+            select_time(val) {
                 this.date_time = val
             }
         }
