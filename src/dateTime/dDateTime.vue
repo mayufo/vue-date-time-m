@@ -393,7 +393,7 @@
              * 展示选择月的选项卡
              */
             selectMonth() {
-                if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date') {
+                if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date' || this.type === 'noMinute') {
                     this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                     this.activeMonth(this.date.getMonth())
                     this.status = 'month'
@@ -430,7 +430,7 @@
              * 关闭其他选项卡，展开日期的选项卡
              */
             close() {
-                if (this.type === 'dateTime' || this.type === 'noMinute') {
+                if (this.type === 'dateTime' || this.type === 'noMinute' || this.type === 'date') {
                     this.status = 'day'
                     this.dateArr = this.verifyMaxMin(this.productDateArr(this.date), 'day')
                 }
