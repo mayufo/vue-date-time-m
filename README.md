@@ -18,13 +18,14 @@ UI部分借鉴了  [vue-persian-datetime-picker](https://talkhabi.github.io/vue-
  1. 增加了时间的间隔，详情可见demo
  2. 可以选择年月日时，而不选择分钟
 
-### npm
+# 安装
 
 ```
 npm install vue-date-time-m
 ```
 
-### use
+# 使用
+
 - main.js
 
 ```
@@ -67,3 +68,6 @@ Vue.component('data-time', dateTime);
           }
         </script>
 ```
+
+# LICENSE
+
