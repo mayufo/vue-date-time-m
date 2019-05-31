@@ -5,18 +5,13 @@
 UI部分借鉴了  [vue-persian-datetime-picker](https://talkhabi.github.io/vue-persian-datetime-picker) 真的做的很棒，可惜是阿拉伯的日期显示方式
 
 
-### 图例
+# 图例
 
 ![](https://github.com/mayufo/vue-date-time-m/blob/master/img.gif)
 
-### 在线demo
+# 在线demo
 [demo](https://mayufo.github.io/vue-date-time-m/)
 
-### 更新
-
-#### 1.0.27
- 1. 增加了时间的间隔，详情可见demo
- 2. 可以选择年月日时，而不选择分钟
 
 # 安装
 
@@ -26,7 +21,7 @@ npm install vue-date-time-m
 
 # 使用
 
-- main.js
+- lang.js
 
 ```
 import dateTime from 'vue-date-time-m';
@@ -69,5 +64,13 @@ Vue.component('data-time', dateTime);
         </script>
 ```
 
+# 最近一次更新
+
+#### 1.0.31
+
+ 1. 增加了时间的间隔，详情可见demo
+ 2. 可以选择年月日时，而不选择分钟
+
 # LICENSE
 
+- [LICENSE](https://github.com/mayufo/vue-date-time-m/blob/master/LICENSE)

@@ -24,36 +24,36 @@
                 <pre v-highlightjs>
         <code class="javascript">
         &lt;template>
-        &lt;div class="date-time-item">
-        &lt;div class="date-time-input" @click="show">[[ data ]]&lt;/div>
-        &lt;date-time ref="dateTime"
-        type="date"
-        @confirm="select">&lt;/date-time>
-        &lt;/div>
+            &lt;div class="date-time-item">
+                &lt;div class="date-time-input" @click="show">[[ data ]]&lt;/div>
+                &lt;date-time ref="dateTime"
+                type="date"
+                @confirm="select">&lt;/date-time>
+            &lt;/div>
         &lt;/template>
 
         &lt;script>
         import DateTime from 'vue-date-time-m'
         export default {
-        data(){
-        return {
-        data: ''
-        }
-        },
-        components: {
-        DateTime
-        },
-        methods: {
-        //  展示日期组件
-        show () {
-        this.$refs.dateTime.show()
-        },
-        // 日期组件回调
-        select (val) {
-        this.data = val
-        }
-        }
-        }
+            data() {
+                return {
+                    data: ''
+                    }
+                },
+                components: {
+                    DateTime
+                },
+                methods: {
+                    //  展示日期组件
+                    show () {
+                        this.$refs.dateTime.show()
+                    },
+                    // 日期组件回调
+                    select (val) {
+                        this.data = val
+                    }
+                }
+            }
         &lt;/script>
 
         </code>
@@ -69,30 +69,30 @@
         Vue.use(VueDataTimeM, {
         name: 'data-time',
         props: {
-        // dateTime 显示 年月日时分 默认值,
-        // date     显示 年月日
-        // time     显示 时分
-        // year     显示 年
-        // month    显示 月
-        type: 'dateTime',
-        // 希望得到的格式
-        // 默认的颜色 #50c7a7
-        color: '#00acc1',
-        // 有效的起始日期
-        // format 2018/07/03 22:45 min不在可选范围内
-        min:  2018/07/03 22:45,
-        // 有效的截止日期
-        // format 2018/09/03 22:45 max不在可选范围内
-        max: 2018/07/03 22:45,
-        // 日期选中值，默认今天
-        value: 2018/07/05 22:45,
-        // 是否显示现在按钮 默认是true
-        showTodayButton: true,
-        // 默认值left, 可以选left\center\right
-        textAlign: left
-        // 时间间隔 1\2\3\4\5\6\10\12\15\20\30\60
-        minutesInterval: 1
-        }
+            // dateTime 显示 年月日时分 默认值,
+            // date     显示 年月日
+            // time     显示 时分
+            // year     显示 年
+            // month    显示 月
+            type: 'dateTime',
+            // 希望得到的格式
+            // 默认的颜色 #50c7a7
+            color: '#00acc1',
+            // 有效的起始日期
+            // format 2018/07/03 22:45 min不在可选范围内
+            min:  2018/07/03 22:45,
+            // 有效的截止日期
+            // format 2018/09/03 22:45 max不在可选范围内
+            max: 2018/07/03 22:45,
+            // 日期选中值，默认今天
+            value: 2018/07/05 22:45,
+            // 是否显示现在按钮 默认是true
+            showTodayButton: true,
+            // 默认值left, 可以选left\center\right
+            textAlign: left
+            // 时间间隔 1\2\3\4\5\6\10\12\15\20\30\60
+            minutesInterval: 1
+            }
         });
         </code>
         </pre>
@@ -107,8 +107,7 @@
         <pre highlightjs>
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
-        &lt;date-time  ref="dateTime"
-        @confirm="select">&lt;/date-time>
+        &lt;date-time  ref="dateTime" @confirm="select">&lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -126,10 +125,10 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        @confirm="select"
-        format="yyyy年MM月dd日 hh小时mm分">
-        &lt;div slot="prevMonth"> &lt;i>-&lt;/i> &lt;/div>
-        &lt;div slot="nextMonth"> &lt;i>+&lt;/i> &lt;/div>
+            @confirm="select"
+            format="yyyy年MM月dd日 hh小时mm分">
+            &lt;div slot="prevMonth"> &lt;i>-&lt;/i> &lt;/div>
+            &lt;div slot="nextMonth"> &lt;i>+&lt;/i> &lt;/div>
         &lt;/date-time>
         </code>
         </pre>
@@ -153,8 +152,9 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        type="date"
-        @confirm="select">&lt;/date-time>
+                   type="date"
+                   @confirm="select">
+        &lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -174,8 +174,9 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        type="noMinute"
-        @confirm="select">&lt;/date-time>
+                   type="noMinute"
+                   @confirm="select">
+        &lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -194,8 +195,9 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        type="month"
-        @confirm="select">&lt;/date-time>
+                   type="month"
+                   @confirm="select">
+        &lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -214,8 +216,9 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        type="year"
-        @confirm="select">&lt;/date-time>
+                   type="year"
+                   @confirm="select">
+        &lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -234,8 +237,9 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        type="date"
-        @confirm="select">&lt;/date-time>
+                   type="date"
+                   @confirm="select">
+        &lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -254,8 +258,9 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime"
-        type="date"
-        @confirm="select">&lt;/date-time>
+                   type="date"
+                   @confirm="select">
+        &lt;/date-time>
         </code>
         </pre>
                         </div>
@@ -274,14 +279,14 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime6"
-        type="dateTime"
-        min="2018/08/21 15:28"
-        max="2018/09/21 14:58"
-        @confirm="select"
-        textAlign="center"
-        color="#417df4">
-        &lt;i slot="prevMonth"> < &lt;/i>
-        &lt;i slot="nextMonth"> > &lt;/i>
+                   type="dateTime"
+                   min="2018/08/21 15:28"
+                   max="2018/09/21 14:58"
+                   @confirm="select"
+                   textAlign="center"
+                   color="#417df4">
+            &lt;i slot="prevMonth"> < &lt;/i>
+            &lt;i slot="nextMonth"> > &lt;/i>
         &lt;/date-time>
         </code>
         </pre>
@@ -308,15 +313,15 @@
         <code class="html">
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime6"
-        type="dateTime"
-        min="2018/08/21 15:28"
-        max="2018/09/21 14:58"
-        @confirm="select"
-        textAlign="center"
-        :minutesInterval="30"
-        color="#417df4">
-        &lt;i slot="prevMonth"> < &lt;/i>
-        &lt;i slot="nextMonth"> > &lt;/i>
+                type="dateTime"
+                min="2018/08/21 15:28"
+                max="2018/09/21 14:58"
+                @confirm="select"
+                textAlign="center"
+                :minutesInterval="30"
+                color="#417df4">
+            &lt;i slot="prevMonth"> < &lt;/i>
+            &lt;i slot="nextMonth"> > &lt;/i>
         &lt;/date-time>
         </code>
         </pre>

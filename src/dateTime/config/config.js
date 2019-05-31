@@ -12,3 +12,4 @@ export const SHOWDAY = 42
 export const MINYEAR = 1900
 
 export const MAXYEAR = 2100
+

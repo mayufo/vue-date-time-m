@@ -108,7 +108,7 @@
     import {WEEKS, MONTH, SHOWDAY, MINYEAR, MAXYEAR, HOURS, MINUTES} from './config/config'
     import time from './utils/dateTime'
     import '../../assets/style.css'
-
+    import {LANG} from './config/lang'
     export default {
         name: 'dDateTime',
         data() {
@@ -124,6 +124,7 @@
                 isShow: false,
                 formatDate: '',
                 confirmDate: '', // 确认后的时间
+                LANG: ''   // 语言
             }
         },
         props: {
