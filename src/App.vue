@@ -280,8 +280,8 @@
         &lt;div class="date-time-input" @click="show">[[date]]&lt;/div>
         &lt;date-time ref="dateTime6"
                    type="dateTime"
-                   min="2018/08/21 15:28"
-                   max="2018/09/21 14:58"
+                   min="2018/08/31"
+                   max="2018/09/02"
                    @confirm="select"
                    textAlign="center"
                    color="#417df4">
@@ -295,8 +295,8 @@
                             <div class="date-time-input" @click="show_limit">{{date_limit}}</div>
                             <date-time ref="dateTime_limit"
                                        type="dateTime"
-                                       min="2018/08/21 15:28"
-                                       max="2018/08/27 14:05"
+                                       min="2018/08/21"
+                                       max="2018/09/02"
                                        @confirm="select_limit"
                                        textAlign="center"
                                        color="#417df4">

@@ -218,8 +218,15 @@
         methods: {
             initDate() {
                 let date = this.value ? new Date(this.value) : new Date()
+                // console.log(date.getTime(), 32432);
                 if (this.type === 'noMinute' || this.minutesInterval !== 1) {
                     date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0)
+                }
+                if (this.min && date.getTime() < new Date(this.min).getTime()) {
+                    date = new Date(new Date(this.min).getFullYear(), new Date(this.min).getMonth(), new Date(this.min).getDate(), new Date(this.min).getHours(), new Date(this.min).getMinutes())
+                }
+                if (this.max && date.getTime() > new Date(this.max).getTime()) {
+                    date = new Date(new Date(this.max).getFullYear(), new Date(this.max).getMonth(), new Date(this.max).getDate(), new Date(this.max).getHours(), new Date(this.max).getMinutes())
                 }
                 return date
             },
@@ -357,7 +364,8 @@
                     } else {
                         this.date = tmp
                     }
-                    this.dateArr = this.productDateArr(this.date)
+                    this.dateArr = this.verifyMaxMin(this.productDateArr(this.date))
+                    console.log(this.dateArr, 32424234);
                     this.verifyTime()
                     this.close()
                 }
@@ -396,6 +404,8 @@
             selectMonth() {
                 if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date' || this.type === 'noMinute') {
                     this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
+                    console.log(this.monthArr, 4324324);
+
                     this.activeMonth(this.date.getMonth())
                     this.status = 'month'
                 }
@@ -450,7 +460,8 @@
                         }
                     }
                 } else if (params === 'last') {
-                    if ((this.min && new Date(this.min).getTime() < new Date(this.date.getFullYear(), this.date.getMonth() - 1, time.getDaysInOneMonth(this.date) - 1).getTime()) || (!this.min)) {
+                    console.log(this.date.getFullYear(), this.date.getMonth(), time.getDaysInOneMonth(this.date) - 1);
+                    if ((this.min && new Date(this.min).getTime() < new Date(this.date.getFullYear(), this.date.getMonth(), time.getDaysInOneMonth(this.date) - 1).getTime()) || (!this.min)) {
                         let tmp = time.changeMonth(this.date, this.date.getMonth() - 1)
                         if (this.min && tmp.getTime() < new Date(this.min)) {
                             let newMonthDay = time.getDaysInOneMonth(tmp)
@@ -613,9 +624,14 @@
                     })
                 } else if (type === 'day') {
                     minDate = arr.findIndex((item) => {
-                        return item.isMonth && minGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), item.value).getTime()
+                        console.log(minGetTime <= new Date(this.date.getFullYear(), this.date.getMonth(), item.value).getTime());
+                        return item.isMonth && minGetTime <= new Date(this.date.getFullYear(), this.date.getMonth(), item.value).getTime()
                     })
-                    minDate--
+                    // if (minDate !== arr.length) {
+                    // minDate--
+                    // }
+                    console.log(minDate);
+
                 } else if (type === 'hour') {
                     minDate = arr.findIndex((item) => {
                         return minGetTime < new Date(this.date.getFullYear(), this.date.getMonth(), this.date.getDate(), parseInt(item.value, 10)).getTime()
