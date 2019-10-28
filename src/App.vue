@@ -115,6 +115,7 @@
                         <div class="date-time-item">
                             <div class="date-time-input" @click="show_demo">{{date_demo}}</div>
                             <date-time ref="dateTime_demo"
+                                       type="yearMonth"
                                        @confirm="select_demo"></date-time>
                         </div>
                         <p>默认值， 展示年月日时分</p>
