@@ -7,7 +7,7 @@
                     <div class="d-date-time-contain" @click.stop v-if="isShow">
                         <div class="d-date-time-header" :style="{background: color}">
                             <div class="d-date-time-year"
-                                 v-if="type === 'dateTime' || type === 'year' || type ==='date'"
+                                 v-if="type === 'dateTime' || type === 'year' || type ==='date' || type === 'yearMonth'"
                                  :class="{left: textAlign === 'left', center: textAlign === 'center', right: textAlign === 'right'}"
                                  @click="selectYear">{{year}}
                             </div>
@@ -263,6 +263,10 @@
                         this.status = 'day'
                         this.formatDate = 'dd'
                         break
+                  case 'yearMonth':
+                    this.status = 'month'
+                    this.formatDate = 'yyyy/MM'
+                    break
                 }
                 if (this.format) {
                     this.formatDate = this.format
@@ -393,7 +397,7 @@
              * 展示选择年的选项卡
              */
             selectYear() {
-                if (this.type === 'year' || this.type === 'dateTime' || this.type === 'date') {
+              if (this.type === 'year' || this.type === 'dateTime' || this.type === 'date' || this.type === 'yearMonth') {
                     this.status = 'year'
                     this.activeYear(this.date.getFullYear())
                 }
@@ -402,7 +406,7 @@
              * 展示选择月的选项卡
              */
             selectMonth() {
-                if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date' || this.type === 'noMinute') {
+                if (this.type === 'month' || this.type === 'dateTime' || this.type === 'date' || this.type === 'noMinute' || this.type === 'yearMonth') {
                     this.monthArr = this.verifyMaxMin(this.produceArr(MONTH), 'month')
                     console.log(this.monthArr, 4324324);
 

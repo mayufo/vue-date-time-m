@@ -74,6 +74,7 @@
             // time     显示 时分
             // year     显示 年
             // month    显示 月
+            // yearMonth 显示年月 (新增)
             type: 'dateTime',
             // 希望得到的格式
             // 默认的颜色 #50c7a7
