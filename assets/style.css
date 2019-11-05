@@ -1,0 +1,212 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+    font-family:PingFangSC-Regular, "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* custom */
+
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+}
+
+li {
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input::-webkit-input-placeholder {
+    color: #666666;
+    font-size: 14px;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: none;
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('//at.alicdn.com/t/font_759583_noeys6mshuf.eot?t=1534008654347');
+    /* IE9*/
+    src: url('//at.alicdn.com/t/font_759583_noeys6mshuf.eot?t=1534008654347#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAVAAAsAAAAAB7QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7kk4Y21hcAAAAYAAAABmAAABnNA4bhZnbHlmAAAB6AAAAVkAAAF8VSSQbmhlYWQAAANEAAAALwAAADYSScCSaGhlYQAAA3QAAAAcAAAAJAfeA4VobXR4AAADkAAAABAAAAAQD+kAAGxvY2EAAAOgAAAACgAAAAoBNACkbWF4cAAAA6wAAAAfAAAAIAETAF1uYW1lAAADzAAAAUUAAAJtPlT+fXBvc3QAAAUUAAAAKgAAADu0+UnxeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sU4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVDz3YW7438AQw9zA0AAUZgTJAQApugy7eJzFkNENgCAMRK+ChhhH8dMwBVP45QhMDGPgtfDDBBx5tL00lBTADsCRm3hAPghUL10x3+E03yOyDjwbYy6xptamTCXWESzb9GU5sEyybvSsy+5nVLrvPOAXS+zoXmvqwP1dEBF/AAB4nE2PP0/CQByG73e1d8efXmmv7UEBoVR6GrSJFWFQYXHROJiog6OLmzqyOOBg4uDgZyAmDn4FVhzZ/ABGd74BWkxMfPPmTd7lSR6kI/T9oY21IhJoFW2ifXSMEJAWNDiuQqDaMW6BG+iudLimQhXQsBFreyAbxPGSTjuShBITOCzDVpB0VIwVbLd7eAcSrwpQKvsndrNia0+QLarl+/khHoFbCytmb2N+sN53krpgg7xtl2z7kRFdZxgvmRyupJfRM1kyf9ZN3x3X1nAN8iXlH50b9bJ98dC+rjZlBmA4BFGu85e+5Vtpb31P2CVaMFjRN8IVBwZfuaLIV6NPlAb/zh0+QzkkU0sV9cCrgcchot1earDwiAGfTglYgqZbcN6n1CkAmVJhAVxOmGMAm2QEx6M3ig2HTRjmIsXCgq218GvKTslUUUllV3aV1tqdzf6Kb/6dHzNJQUkAAAB4nGNgZGBgAOIjKSLx8fw2Xxm4WRhA4PpUOz8E/f8hCwOzBJDLwcAEEgUADOIJRQB4nGNgZGBgbvjfwBDDwgACQJKRARWwAABHCgJtBAAAAAPpAAAEAAAABAAAAAAAAAAAdgCkAL4AAHicY2BkYGBgYQhkYGUAASYg5gJCBob/YD4DABESAXEAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAhZGJkZmRhZGVgbGCNbGoKL+cNTknvziVgQEALhgE5wAA') format('woff'), url('//at.alicdn.com/t/font_759583_noeys6mshuf.ttf?t=1534008654347') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('//at.alicdn.com/t/font_759583_noeys6mshuf.svg?t=1534008654347#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow:before {
+    content: "\e636";
+}
+
+.icon-close:before {
+    content: "\e74c";
+}
