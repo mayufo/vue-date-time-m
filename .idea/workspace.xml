@@ -33,7 +33,7 @@
           <entry key="babelrc" value="1" />
           <entry key="css" value="5" />
           <entry key="gif" value="1" />
-          <entry key="gitignore" value="2" />
+          <entry key="gitignore" value="3" />
           <entry key="html" value="3" />
           <entry key="js" value="22" />
           <entry key="json" value="21" />
@@ -52,7 +52,7 @@
           <entry key="JSON" value="17" />
           <entry key="JavaScript" value="22" />
           <entry key="Markdown" value="6" />
-          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="SVG" value="3" />
           <entry key="TypeScript" value="8" />
           <entry key="Vue.js" value="42" />
@@ -64,7 +64,7 @@
         <counts>
           <entry key="LICENSE" value="11" />
           <entry key="css" value="4" />
-          <entry key="gitignore" value="9" />
+          <entry key="gitignore" value="23" />
           <entry key="js" value="243" />
           <entry key="json" value="215" />
           <entry key="md" value="133" />
@@ -79,7 +79,7 @@
           <entry key="JSON" value="162" />
           <entry key="JavaScript" value="243" />
           <entry key="Markdown" value="56" />
-          <entry key="PLAIN_TEXT" value="172" />
+          <entry key="PLAIN_TEXT" value="186" />
           <entry key="TypeScript" value="737" />
           <entry key="Vue.js" value="10025" />
           <entry key="tsconfig" value="53" />
@@ -99,11 +99,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="403">
               <caret line="116" column="58" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -172,7 +181,6 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/dateTime/dDateTime.vue" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/components/HelloWorld.vue" />
         <option value="$PROJECT_DIR$/src/config/language.js" />
         <option value="$PROJECT_DIR$/src/config/i18n.js" />
@@ -189,6 +197,7 @@
         <option value="$PROJECT_DIR$/src/components/DateTime.vue" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -326,12 +335,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118296000" />
+    <option name="totallyTimeSpent" value="118586000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24171951" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24171951" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -345,7 +354,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49964765" weight="0.32867134" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.4038055" side_tool="true" visible="true" weight="0.31235433" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.5961945" visible="true" weight="0.31235433" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.5961945" visible="true" weight="0.31235433" />
       <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49964765" weight="0.32983682" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -413,7 +422,6 @@
     <entry file="file://$PROJECT_DIR$/src/dateTime/config/lang.js" />
     <entry file="file://$PROJECT_DIR$/src/dateTime/lang/main-zhCN.json" />
     <entry file="file://$PROJECT_DIR$/src/dateTime/utils/dateTime.js" />
-    <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/src/dateTime/dDateTime.vue" />
     <entry file="file://$PROJECT_DIR$/postcss.config.js" />
@@ -435,6 +443,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
           <caret line="116" column="58" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
         </state>
       </provider>
     </entry>
