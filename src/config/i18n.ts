@@ -16,4 +16,3 @@ export default {
         end: 'end',
     },
 };
-//# sourceMappingURL=i18n.js.map

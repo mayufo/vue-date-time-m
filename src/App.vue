@@ -4,17 +4,17 @@
   </div>
 </template>
 
-<script>
-import DateTimeM from './components/DateTimeM.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import DateTimeM from './components/DateTimeM.vue';
 
-export default {
-  name: 'app',
+@Component({
   components: {
-    DateTimeM
-  }
-}
+      DateTimeM,
+  },
+})
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
-
 </style>
