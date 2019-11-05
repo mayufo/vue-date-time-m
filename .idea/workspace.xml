@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="204692eb-7ce6-4a56-a805-8e443ffe0ff0" name="Default Changelist" comment="修改：1.0.27" />
+    <ignored path="$PROJECT_DIR$/dist/" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1400175833">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="20" />
+          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.2" value="8" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="22" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="LICENSE" value="1" />
+          <entry key="babelrc" value="1" />
+          <entry key="css" value="5" />
+          <entry key="gif" value="1" />
+          <entry key="gitignore" value="2" />
+          <entry key="html" value="3" />
+          <entry key="js" value="22" />
+          <entry key="json" value="21" />
+          <entry key="lock" value="1" />
+          <entry key="md" value="7" />
+          <entry key="svg" value="3" />
+          <entry key="ts" value="8" />
+          <entry key="vue" value="41" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="5" />
+          <entry key="HTML" value="3" />
+          <entry key="Image" value="1" />
+          <entry key="JSON" value="17" />
+          <entry key="JavaScript" value="22" />
+          <entry key="Markdown" value="6" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="SVG" value="3" />
+          <entry key="TypeScript" value="8" />
+          <entry key="Vue.js" value="41" />
+          <entry key="tsconfig" value="5" />
+          <entry key="yarn.lock" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="LICENSE" value="11" />
+          <entry key="css" value="4" />
+          <entry key="gitignore" value="9" />
+          <entry key="js" value="243" />
+          <entry key="json" value="215" />
+          <entry key="md" value="133" />
+          <entry key="ts" value="737" />
+          <entry key="txt" value="75" />
+          <entry key="vue" value="10024" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="4" />
+          <entry key="JSON" value="162" />
+          <entry key="JavaScript" value="243" />
+          <entry key="Markdown" value="56" />
+          <entry key="PLAIN_TEXT" value="172" />
+          <entry key="TypeScript" value="737" />
+          <entry key="Vue.js" value="10024" />
+          <entry key="tsconfig" value="53" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>selectMonth</find>
+      <find>chooseMonth</find>
+      <find>produceArr</find>
+      <find>productDateArr</find>
+      <find>verifyMaxMin</find>
+      <find>minDate</find>
+      <find>changeMonth</find>
+      <find>maxmin</find>
+      <find>addMinDisable</find>
+      <find>show_limit</find>
+      <find>type === 'dateTime'</find>
+      <find>'year'</find>
+      <find>@babel/env&quot;</find>
+      <find>message</find>
+      <find>i18n</find>
+      <find>prose</find>
+      <find>suppressImplicitAnyIndexErrors</find>
+      <find>week-item</find>
+      <find>productDayArr</find>
+      <find>day-item</find>
+      <find>day-value-wrapper</find>
+      <find>day-value-content</find>
+      <find>DateTime</find>
+      <find>year</find>
+      <find>date-time-wrap</find>
+      <find>specialWeek</find>
+      <find>light</find>
+      <find>selectYear</find>
+      <find>select</find>
+      <find>selectDayFn</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>noTime</replace>
+      <replace>&quot;</replace>
+      <replace>'</replace>
+      <replace>title</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/dateTime/utils/date.js" />
+        <option value="$PROJECT_DIR$/src/dateTime/components/dDateTimePickHm.vue" />
+        <option value="$PROJECT_DIR$/LICENSE" />
+        <option value="$PROJECT_DIR$/src/dateTime/config/config.js" />
+        <option value="$PROJECT_DIR$/src/dateTime/lang/main-zhCN.json" />
+        <option value="$PROJECT_DIR$/src/dateTime/lang/main.json" />
+        <option value="$PROJECT_DIR$/src/dateTime/lang/main.js" />
+        <option value="$PROJECT_DIR$/src/dateTime/config/lang.js" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/dateTime/dDateTime.vue" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/components/HelloWorld.vue" />
+        <option value="$PROJECT_DIR$/src/config/language.js" />
+        <option value="$PROJECT_DIR$/src/config/i18n.js" />
+        <option value="$PROJECT_DIR$/tslint.json" />
+        <option value="$PROJECT_DIR$/src/main.ts" />
+        <option value="$PROJECT_DIR$/src/assets/css/reset.css" />
+        <option value="$PROJECT_DIR$/src/components/dateTime.js" />
+        <option value="$PROJECT_DIR$/src/components/dateTime.ts" />
+        <option value="$PROJECT_DIR$/tsconfig.json" />
+        <option value="$PROJECT_DIR$/src/config/i18n.ts" />
+        <option value="$PROJECT_DIR$/src/components/dateTimeYear.ts" />
+        <option value="$PROJECT_DIR$/src/components/dateTimeYear.vue" />
+        <option value="$PROJECT_DIR$/src/components/DateTimeYear.vue" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/src/components/DateTime.vue" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="vue-date-time-m" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-date-time-m" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vue-date-time-m" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-date-time-m" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vue-date-time-m" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-date-time-m" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vue-date-time-m" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-date-time-m" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vue-date-time-m" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-date-time-m" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="pack&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/package.json&#10;pa&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/package.json&#10;app&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/src/App.vue&#10;re&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/README.md&#10;config&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/src/dateTime/config/config.js&#10;main.js&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/src/main.js&#10;time.js&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/src/dateTime/utils/dateTime.js&#10;ddateTime&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/src/dateTime/dDateTime.vue&#10;year&#9;FILE&#9;file:///Users/liuhuimin/work/vue-date-time-m/src/dateTime/components/dDateTimePickYear.vue" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/css/fonts" />
+      <recent name="$PROJECT_DIR$/src/assets/css" />
+      <recent name="$PROJECT_DIR$/src/dateTime/config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/assets/fonts" />
+      <recent name="$PROJECT_DIR$/src/dateTime/lang" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="204692eb-7ce6-4a56-a805-8e443ffe0ff0" name="Default Changelist" comment="" />
+      <created>1539848331454</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539848331454</updated>
+      <workItem from="1539848333255" duration="1365000" />
+      <workItem from="1540176453887" duration="8617000" />
+      <workItem from="1540259823383" duration="1291000" />
+      <workItem from="1540303982332" duration="4752000" />
+      <workItem from="1540777891353" duration="6780000" />
+      <workItem from="1540863868776" duration="67000" />
+      <workItem from="1540864026272" duration="671000" />
+      <workItem from="1542333328614" duration="6207000" />
+      <workItem from="1542710755161" duration="1631000" />
+      <workItem from="1542881555469" duration="1470000" />
+      <workItem from="1546839762802" duration="453000" />
+      <workItem from="1548644975367" duration="2451000" />
+      <workItem from="1551945542918" duration="2160000" />
+      <workItem from="1552875493281" duration="6211000" />
+      <workItem from="1553651108730" duration="1666000" />
+      <workItem from="1553854681898" duration="9000" />
+      <workItem from="1559186666987" duration="6984000" />
+      <workItem from="1562143112897" duration="8283000" />
+      <workItem from="1562567001140" duration="455000" />
+      <workItem from="1572234806730" duration="12832000" />
+      <workItem from="1572343086186" duration="18101000" />
+      <workItem from="1572835844413" duration="25604000" />
+    </task>
+    <task id="LOCAL-00001" summary="增加：时间间隔，可以以2 3 4 5 12 15 20 30 来选择分钟">
+      <created>1542335348800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542335348800</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修改：日期的版本号">
+      <created>1542336447071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1542336447071</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修改：1.0.27">
+      <created>1542336531068</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1542336531068</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="118060000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17899929" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49964765" weight="0.32867134" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49964765" weight="0.32867134" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.4031008" side_tool="true" visible="true" weight="0.31585082" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.5968992" visible="true" weight="0.31585082" />
+      <window_info anchor="bottom" id="TypeScript" order="11" sideWeight="0.49964765" weight="0.32983682" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../blog-vue-typescript/node_modules/@vue/cli-plugin-unit-mocha/generator/template/tests/unit/example.spec.js" />
+        <option value="$PROJECT_DIR$/src/main.js.map" />
+        <option value="$PROJECT_DIR$/src/components/dateTime.js.map" />
+        <option value="$PROJECT_DIR$/src/components/dateTime.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加：时间间隔，可以以2 3 4 5 12 15 20 30 来选择分钟" />
+    <MESSAGE value="修改：日期的版本号" />
+    <MESSAGE value="修改：1.0.27" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改：1.0.27" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Downloads/date.js" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/utils/date.js" />
+    <entry file="file://$PROJECT_DIR$/yarn.lock" />
+    <entry file="file://$PROJECT_DIR$/dist/build.js" />
+    <entry file="file://$PROJECT_DIR$/LICENSE" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/config/config.js" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/components/dDateTimeCard.vue" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/components/dDateTimePickHm.vue" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/components/dDateTimePickYear.vue" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/components/scroll/bubble.vue" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/components/scroll/loading.gif" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/components/scroll/loading.vue" />
+    <entry file="file://$PROJECT_DIR$/src/main.js" />
+    <entry file="file://$PROJECT_DIR$/webpack.config.js" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/config/lang.js" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/lang/main-zhCN.json" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/utils/dateTime.js" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/src/dateTime/dDateTime.vue" />
+    <entry file="file://$PROJECT_DIR$/postcss.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc" />
+    <entry file="file://$PROJECT_DIR$/tslint.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dateTime.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/fonts/iconfont.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/fonts/iconfont.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/babel.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/i18n.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dateTime.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DateTimeYear.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="20" />
+          <folding>
+            <element signature="e#98#158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DateTime.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="433">
+            <caret line="76" selection-start-line="76" selection-end-line="76" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
